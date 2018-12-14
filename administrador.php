@@ -139,40 +139,57 @@
               <table id="tesis" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Asesor</th>
                         <th>Nombre</th>
                         <th>Tema</th>
                         <th>Perfil</th>
-                        <th>Acciones</th>
+                        <th>Ver</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>#</th>
                         <th>Asesor</th>
                         <th>Nombre</th>
                         <th>Tema</th>
                         <th>Perfil</th>
-                        <th>Acciones</th>
+                        <th>Ver</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </tfoot>
 
                 <?php
-                echo "<tbody>";
+
                 while($row = mysqli_fetch_assoc($result)) {
                   echo "<tr>
+                      <td>" . $row["ThesisID"]. "</td>
                       <td>" . $row["ResearcherName"]. "</td>
                       <td>" . $row["ThesisName"]. "</td>
                       <td>" . $row["TopicName"]. "</td>
                       <td>" . $row["EducativeProgramName"]. "</td>"
                       ?>
-                      <td width="200" class="text-center">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#thesisRequest" onclick="seeThesis(<?php echo $row["ThesisID"]; ?>)">Ver</button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#thesisRechazar" onclick="rejectThesis(<?php echo $row["ThesisID"]; ?>)">Rechazar</button>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-primary">
+                          <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                      </td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-warning">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                      </td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-minus"> </span>
+                        </button>
                       </td>
                       <?php
                       echo "</tr>";
-              }
-               echo "</tbody>";
+                    }
              ?>
             </table>
             <br><br><br>
@@ -181,56 +198,22 @@
 </div>
 
   </body>
-  <?php include('view-thesis.php'); ?>
-  <?php include('eliminar.php'); ?>
+  <?php include('assets/pages/modals/Administrator/view-thesis.php'); ?>
+  <?php include('assets/pages/modals/Administrator/eliminar.php'); ?>
   <?php include('footer-fixed.php'); ?>
-  <?php include('profile.php'); ?>
+  <?php include('assets/pages/modals/Administrator/profile.php'); ?>
   <!-- Load javascripts at bottom, this will reduce page load time -->
   <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
   <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
   <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
   <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-  <script src="assets\pages\scripts\thesis.js" type="text/javascript"></script>
+  <script type="text/javascript" src="assets/pages/scripts/Administrator/Thesis.js"></script>
   <!-- END CORE PLUGINS -->
   <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
   <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-
   <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-  <script type="text/javascript">
-      $(document).ready(function() {
-        getThesis();
-         $('#tesis').DataTable({
-           "language":
-           {
-             "sZeroRecords":    "No se encontraron resultados",
-             "sProcessing":     "Procesando...",
-             "sLengthMenu":     "Mostrar _MENU_ registros",
-             "sEmptyTable":     "Ningún dato disponible en esta tabla",
-             "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-             "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-             "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-             "sInfoPostFix":    "",
-             "sSearch":         "Buscar:",
-             "sUrl":            "",
-             "sInfoThousands":  ",",
-              "sLoadingRecords": "Cargando...",
-             "oPaginate": {
-                 "sFirst":    "Primero",
-                 "sLast":     "Último",
-                 "sNext":     "Siguiente",
-                 "sPrevious": "Anterior"
-             },
-             "oAria": {
-                 "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-             }
-
-             }
-         });
-      } );
-  </script>
-  <script src="assets\plugins\DataTables\DataTables-1.10.18\js\jquery.dataTables.min.js" type="text/javascript"></script>
+  <script src="assets/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
   <script type="text/javascript">
       jQuery(document).ready(function() {
           Layout.init();
