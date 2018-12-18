@@ -10,8 +10,7 @@
          <h4 class="modal-title">Thesis-Selecter</h4>
        </div>
        <div class="modal-body">
-         <h4>¿Seguro de rechazar tesis?</h4>
-         <input type="hidden" id="rejectID" name="reject">
+         <h4>¿Seguro de eliminar tesis <span id="thesisID_Delete" name="thesisID_Delete" value="3">3</span>?</h4>
        </div>
        <div class="modal-footer">
          <button type="submit" name="btnReject" class="btn btn-primary">Aceptar</button>

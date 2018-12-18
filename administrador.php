@@ -17,14 +17,8 @@
 
     if (isset($_POST['btnReject']))
         {
-          $reject= $_POST['reject'];
-          $sql = "UPDATE thesis SET Category='3' WHERE ThesisID=$reject";
-          if ($connection->query($sql) === TRUE) {
-           header("Location: administrador.php");
-             } else {
-           header("Location: administrador.php");
-            }
-           $connection->close();
+          $delete= $_POST['thesisID_Delete'];
+          delete_thesis($delete);
         }
     $category =1;
 ?>
