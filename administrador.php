@@ -26,10 +26,7 @@
             }
            $connection->close();
         }
-
-    $sql = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 1";
-    $result = mysqli_query($connection, $sql);
-
+    $category =1;
 ?>
 <html lang="en" dir="ltr">
   <head>
@@ -78,7 +75,7 @@
     <div class="header">
         <div class="container">
             <a class="site-logo" href="administrador.php"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
-            <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+            <a href="" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
@@ -94,7 +91,7 @@
                             </div>
                         </profile>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#profile"><?php echo $_SESSION['researcher']->get_full_name_admnistrador(); ?></a></li>
+                            <li><a href="" data-toggle="modal" data-target="#profile"><?php echo $_SESSION['researcher']->get_full_name_admnistrador(); ?></a></li>
                             <li><a href="assets/code/session.php?logout=true">Cerrar Sesión</a></li>
                         </ul>
                     </li>
@@ -103,7 +100,7 @@
                         <span class="sep"></span>
                         <i class="fa fa-search search-btn"></i>
                         <div class="search-box">
-                            <form action="javascript:void(0);">
+                            <form action="">
                                 <div class="input-group">
                                     <input type="text" placeholder="Buscar" class="form-control">
                                     <span class="input-group-btn">
@@ -143,9 +140,7 @@
                         <th>Asesor</th>
                         <th>Nombre</th>
                         <th>Tema</th>
-                        <th>Perfil</th>
                         <th>Ver</th>
-                        <th>Modificar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
@@ -155,42 +150,33 @@
                         <th>Asesor</th>
                         <th>Nombre</th>
                         <th>Tema</th>
-                        <th>Perfil</th>
                         <th>Ver</th>
-                        <th>Modificar</th>
                         <th>Eliminar</th>
                     </tr>
                 </tfoot>
 
                 <?php
-
+                get_administrator_thesis($category);
                 while($row = mysqli_fetch_assoc($result)) {
-                  echo "<tr>
-                      <td>" . $row["ThesisID"]. "</td>
-                      <td>" . $row["ResearcherName"]. "</td>
-                      <td>" . $row["ThesisName"]. "</td>
-                      <td>" . $row["TopicName"]. "</td>
-                      <td>" . $row["EducativeProgramName"]. "</td>"
-                      ?>
+                ?>
+                  <tr>
+                      <td><?php echo $row["ThesisID"]?></td>
+                      <td><?php echo $row["ResearcherName"]?></td>
+                      <td><?php echo $row["ThesisName"]?></td>
+                      <td><?php echo $row["TopicName"]?></td>
                       <td class="text-center">
-                        <button type="button" class="btn btn-primary">
-                          <span class="glyphicon glyphicon-search"></span>
+                        <button type="button" id="view" class="btn btn-primary"  data-toggle="modal" data-target="#thesisAdministrador" onclick="getThesisDetails(<?php echo $row["ThesisID"]?>)">
+                          <span class="glyphicon glyphicon-eye-open"></span>
                         </button>
                       </td>
+
                       <td class="text-center">
-                        <button type="button" class="btn btn-warning">
-                          <span class="glyphicon glyphicon-pencil"></span>
+                        <button type="button" data-toggle="modal" data-target="#thesisDelete" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove"> </span>
                         </button>
                       </td>
-                      <td class="text-center">
-                        <button type="button" class="btn btn-danger">
-                          <span class="glyphicon glyphicon-minus"> </span>
-                        </button>
-                      </td>
-                      <?php
-                      echo "</tr>";
-                    }
-             ?>
+                    </tr>
+                  <?php } ?>
             </table>
             <br><br><br>
 

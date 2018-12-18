@@ -603,6 +603,7 @@
 
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
-<?php include('profile-teacher.php') ?>
+<?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+
 <!-- END BODY -->
 </html>

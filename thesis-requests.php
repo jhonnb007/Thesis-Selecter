@@ -48,11 +48,11 @@ if (isset($_POST['btnReject']))
                $connection->close();
         }
 
-$processThesis = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 2";
-$processResult = mysqli_query($connection, $processThesis);
+// $processThesis = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 2";
+// $processResult = mysqli_query($connection, $processThesis);
 
-$rejectedThesis = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 3";
-$rejectedResult = mysqli_query($connection, $rejectedThesis);
+// $rejectedThesis = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 3";
+// $rejectedResult = mysqli_query($connection, $rejectedThesis);
 ?>
 <html lang="en" dir="ltr">
   <head>
@@ -160,13 +160,12 @@ $rejectedResult = mysqli_query($connection, $rejectedThesis);
         </div>
     </div>
   </body>
-    <?php include('reject.php'); ?>
-    <?php include('view-thesis-request.php'); ?>
-    <?php include('view-thesis.php'); ?>
-    <?php include('accept.php'); ?>
-    <?php include('revertir.php'); ?>
+    <?php include('assets\pages\modals\Administrator\reject.php'); ?>
+    <?php include('assets\pages\modals\Administrator\view-thesis.php'); ?>
+    <?php include('assets\pages\modals\Administrator\accept.php'); ?>
+    <?php include('assets\pages\modals\Administrator\revertir.php'); ?>
     <?php include('footer-fixed.php'); ?>
-    <?php include('profile.php'); ?>
+    <?php include('assets\pages\modals\Administrator\profile.php'); ?>
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
