@@ -1,5 +1,5 @@
 <!-- Modal -->
- <div class="modal fade" id="thesisEliminar" role="dialog">
+ <div class="modal fade" id="thesisDelete" role="dialog">
    <form class="form-horizontal form-without-legend" action="administrador.php" method="post">
    <div class="modal-dialog">
 

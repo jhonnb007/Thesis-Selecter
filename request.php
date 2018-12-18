@@ -327,7 +327,7 @@
 
         </div>
     </div>
-        <?php include('profile-teacher.php') ?>
+        <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
     <!-- END FOOTER -->

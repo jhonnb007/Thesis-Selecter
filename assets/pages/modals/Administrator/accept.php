@@ -1,5 +1,5 @@
 <!-- Modal -->
- <div class="modal fade" id="thesisAceptar" role="dialog">
+ <div class="modal fade" id="thesisAccept" role="dialog">
    <div class="modal-dialog">
 
      <!-- Modal content-->

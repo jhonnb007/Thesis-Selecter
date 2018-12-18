@@ -188,8 +188,8 @@
 
         </div>
     </div>
-    <?php include('profile-teacher.php') ?>
-    <?php include('add-thesis.php') ?>
+    <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+    <?php include('assets/pages/modals/Researcher/add-thesis.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>

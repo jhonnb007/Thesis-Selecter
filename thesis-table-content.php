@@ -9,10 +9,9 @@
             <th>Asesor</th>
             <th>Nombre</th>
             <th>Tema</th>
-            <th>Perfil</th>
+            <th>Aceptar</th>
             <th>Ver</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
+            <th>Rechazar</th>
           </tr>
       </thead>
       <tfoot>
@@ -21,40 +20,38 @@
             <th>Asesor</th>
             <th>Nombre</th>
             <th>Tema</th>
-            <th>Perfil</th>
+            <th>Aceptar</th>
             <th>Ver</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
+            <th>Rechazar</th>
           </tr>
       </tfoot>
       <?php
-      while($rowProcess = mysqli_fetch_assoc($processResult)) {
-        echo "<tr>
-            <td>" . $rowProcess["ThesisID"]. "</td>
-            <td>" . $rowProcess["ResearcherName"]. "</td>
-            <td>" . $rowProcess["ThesisName"]. "</td>
-            <td>" . $rowProcess["TopicName"]. "</td>
-            <td>" . $rowProcess["EducativeProgramName"]. "</td>"
-            ?>
+      $category = 2;
+      get_administrator_thesis($category);
+      while($rowProcess = mysqli_fetch_assoc($result)) {
+      ?>
+        <tr>
+            <td><?php echo $rowProcess["ThesisID"] ?></td>
+            <td><?php echo $rowProcess["ResearcherName"] ?></td>
+            <td><?php echo $rowProcess["ThesisName"] ?></td>
+            <td><?php echo $rowProcess["TopicName"] ?></td>
             <td class="text-center">
-              <button type="button" class="btn btn-primary">
-                <span class="glyphicon glyphicon-search"></span>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#thesisAccept">
+                <span class="glyphicon glyphicon-ok"></span>
               </button>
             </td>
             <td class="text-center">
-              <button type="button" class="btn btn-warning">
-                <span class="glyphicon glyphicon-pencil"></span>
+              <button type="button" id="view" class="btn btn-primary"  data-toggle="modal" data-target="#thesisAdministrador" onclick="getThesisDetails(<?php echo $rowProcess["ThesisID"]?>)">
+                <span class="glyphicon glyphicon-eye-open"></span>
               </button>
             </td>
             <td class="text-center">
-              <button type="button" class="btn btn-danger">
-                <span class="glyphicon glyphicon-minus"> </span>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#thesisReject">
+                <span class="glyphicon glyphicon-remove"></span>
               </button>
             </td>
-            <?php
-            echo "</tr>";
-    }
-   ?>
+        </tr>
+      <?php } ?>
   </table>
   <br>
   </div>
@@ -68,10 +65,8 @@
             <th>Asesor</th>
             <th>Nombre</th>
             <th>Tema</th>
-            <th>Perfil</th>
             <th>Ver</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
+            <th>Revertir</th>
           </tr>
       </thead>
       <tfoot>
@@ -80,40 +75,33 @@
             <th width="120">Asesor</th>
             <th width="280">Nombre</th>
             <th width="150">Tema</th>
-            <th width="100">Perfil</th>
             <th>Ver</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
+            <th>Revertir</th>
           </tr>
       </tfoot>
       <?php
-      while($rejectedRow = mysqli_fetch_assoc($rejectedResult)) {
-        echo "<tr>
-            <td>" . $rejectedRow["ThesisID"]. "</td>
-            <td>" . $rejectedRow["ResearcherName"]. "</td>
-            <td>" . $rejectedRow["ThesisName"]. "</td>
-            <td>" . $rejectedRow["TopicName"]. "</td>
-            <td>" . $rejectedRow["EducativeProgramName"]. "</td>"
-            ?>
+      $category =3;
+      get_administrator_thesis($category);
+      while($rejectedRow = mysqli_fetch_assoc($result)) {
+        ?>
+        <tr>
+            <td><?php echo $rejectedRow["ThesisID"]?></td>
+            <td><?php echo $rejectedRow["ResearcherName"]?></td>
+            <td><?php echo $rejectedRow["ThesisName"]?></td>
+            <td><?php echo $rejectedRow["TopicName"]?></td>
             <td class="text-center">
-              <button type="button" class="btn btn-primary">
-                <span class="glyphicon glyphicon-search"></span>
+              <button type="button" id="view" class="btn btn-primary"  data-toggle="modal" data-target="#thesisAdministrador" onclick="getThesisDetails(<?php echo $rejectedRow["ThesisID"]?>)">
+                <span class="glyphicon glyphicon-eye-open"></span>
               </button>
             </td>
+
             <td class="text-center">
-              <button type="button" class="btn btn-warning">
-                <span class="glyphicon glyphicon-pencil"></span>
+              <button type="button" class="btn btn-secondary">
+                <span class="glyphicon glyphicon-repeat"> </span>
               </button>
             </td>
-            <td class="text-center">
-              <button type="button" class="btn btn-danger">
-                <span class="glyphicon glyphicon-minus"> </span>
-              </button>
-            </td>
-            <?php
-            echo "</tr>";
-    }
-   ?>
+          </tr>
+            <?php } ?>
   </table>
   </div>
 </div>
