@@ -130,8 +130,27 @@ function getTecnology(result)
         $("#tecnology").html(arrayConcat);
  });
 }
-
-
+function headerDeleteID(id)
+{
+  $("#thesisID_Delete").attr("value",id);
+  $("#thesisID_Delete").text(id);
+}
+function postDeleteThesis()
+{
+   $("#frm_delete").on("submit", function (e)
+   {
+     e.preventDefault();
+     var id = $("#thesisID_Delete").text();
+     console.log(id);
+     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+       {
+        deleteID: id
+       },
+        function(){
+        location.href = "administrador.php";
+       });
+   });
+}
 
 $(document).ready(function() {
   getThesisTable();
@@ -140,4 +159,5 @@ $(document).ready(function() {
   getSupport();
   getFundingAgency();
   getTecnology();
+  postDeleteThesis();
 });

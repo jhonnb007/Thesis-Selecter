@@ -1,6 +1,6 @@
 <!-- Modal -->
  <div class="modal fade" id="thesisRevert" role="dialog">
-   <form class="form-horizontal form-without-legend" action="thesis-requests.php" method="post">
+   <form class="form-horizontal form-without-legend" id="frm_revert">
    <div class="modal-dialog">
 
      <!-- Modal content-->
@@ -10,11 +10,10 @@
          <h4 class="modal-title">Thesis-Selecter</h4>
        </div>
        <div class="modal-body">
-         <h4>¿Seguro de rechazar tesis?</h4>
-         <input type="hidden" id="revertID" name="revert">
+         <h4>¿Seguro de restaurar tesis # <span id="thesisID_Revert" name="ID"></span>?</h4>
        </div>
        <div class="modal-footer">
-         <button type="submit" name="btnRevert" class="btn btn-primary">Aceptar</button>
+         <button type="submit" class="btn btn-primary">Aceptar</button>
          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
        </div>
      </div>

@@ -15,11 +15,7 @@
         header("Location: error-permission.php");
     }
 
-    if (isset($_POST['btnReject']))
-        {
-          $delete= $_POST['thesisID_Delete'];
-          delete_thesis($delete);
-        }
+
     $category =1;
 ?>
 <html lang="en" dir="ltr">
@@ -165,7 +161,7 @@
                       </td>
 
                       <td class="text-center">
-                        <button type="button" data-toggle="modal" data-target="#thesisDelete" class="btn btn-danger">
+                        <button type="button" data-toggle="modal" data-target="#thesisDelete" onclick="headerDeleteID(<?php echo $row["ThesisID"]?>)" class="btn btn-danger">
                           <span class="glyphicon glyphicon-remove"> </span>
                         </button>
                       </td>

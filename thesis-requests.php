@@ -157,6 +157,7 @@ if (isset($_POST['btnReject']))
                 </div>
                 <!-- END CONTENT -->
              </div>
+             <br><br>
         </div>
     </div>
   </body>

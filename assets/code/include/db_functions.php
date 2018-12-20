@@ -8,7 +8,10 @@
 	include_once 'assets/code/educative_program.php';
         include_once 'assets/code/student.php';
 
-  function loginAdmin($emailAdmin, $passwordAdmin)
+
+
+				
+	function loginAdmin($emailAdmin, $passwordAdmin)
   {
   	global $connection;
 		$administrador = new Administrador;
@@ -527,17 +530,7 @@
 					return $result;
 				}
 
-				function delete_thesis($delete)
-				{
-					global $connection;
-					$sql = "UPDATE thesis SET Category='3' WHERE ThesisID=$delete";
-          if ($connection->query($sql) === TRUE) {
-           header("Location: administrador.php");
-             } else {
-           header("Location: administrador.php");
-            }
-           $connection->close();
-				}
+
 
 
 ?>
