@@ -36,7 +36,7 @@
             <td><?php echo $rowProcess["ThesisName"] ?></td>
             <td><?php echo $rowProcess["TopicName"] ?></td>
             <td class="text-center">
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#thesisAccept">
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#thesisAccept" onclick="headerAcceptID(<?php echo $rowProcess["ThesisID"] ?>)">
                 <span class="glyphicon glyphicon-ok"></span>
               </button>
             </td>
@@ -46,14 +46,13 @@
               </button>
             </td>
             <td class="text-center">
-              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#thesisReject">
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#thesisReject" onclick="headerRejectID(<?php echo $rowProcess["ThesisID"]; ?>)">
                 <span class="glyphicon glyphicon-remove"></span>
               </button>
             </td>
         </tr>
       <?php } ?>
   </table>
-  <br>
   </div>
   <div id="tesisDecline" class="tab-pane fade">
     <h3>Tesis rechazadas</h3>
@@ -96,7 +95,7 @@
             </td>
 
             <td class="text-center">
-              <button type="button" class="btn btn-secondary">
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#thesisRevert" onclick="headerRevertID(<?php echo $rejectedRow["ThesisID"];?>)">
                 <span class="glyphicon glyphicon-repeat"> </span>
               </button>
             </td>

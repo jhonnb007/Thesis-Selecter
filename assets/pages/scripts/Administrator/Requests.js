@@ -165,7 +165,78 @@ function getTecnology(result)
  });
 }
 
+function headerAcceptID(id)
+{
+  $("#thesisID_Accept").attr("value",id);
+  $("#thesisID_Accept").text(id);
+}
+
+function headerRejectID(id)
+{
+  $("#thesisID_Reject").attr("value",id);
+  $("#thesisID_Reject").text(id);
+}
+
+function headerRevertID(id)
+{
+  $("#thesisID_Revert").attr("value",id);
+  $("#thesisID_Revert").text(id);
+}
+
+function postRevertThesis()
+{
+   $("#frm_revert").on("submit", function (e)
+   {
+     e.preventDefault();
+     var id = $("#thesisID_Revert").text();
+     console.log(id);
+     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+       {
+        revertID: id
+       },
+        function(){
+        location.href = "thesis-requests.php";
+       });
+   });
+}
+
+function postRejectThesis()
+{
+   $("#frm_reject").on("submit", function (e)
+   {
+     e.preventDefault();
+     var id = $("#thesisID_Reject").text();
+     console.log(id);
+     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+       {
+        rejectID: id
+       },
+        function(){
+        location.href = "thesis-requests.php";
+       });
+   });
+}
+
+function postAcceptThesis()
+{
+   $("#frm_accept").on("submit", function (e)
+   {
+     e.preventDefault();
+     var id = $("#thesisID_Accept").text();
+     console.log(id);
+     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+       {
+        acceptID: id
+       },
+        function(){
+        location.href = "thesis-requests.php";
+       });
+   });
+}
 $(document).ready(function() {
+  postRejectThesis();
+  postAcceptThesis();
+  postRevertThesis();
   getProcessTable();
   getRejectedTable();
   getThesisDetails(0);
