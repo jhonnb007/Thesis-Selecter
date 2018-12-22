@@ -15,21 +15,8 @@
         header("Location: error-permission.php");
     }
 
-    if (isset($_POST['btnReject']))
-        {
-          $reject= $_POST['reject'];
-          $sql = "UPDATE thesis SET Category='3' WHERE ThesisID=$reject";
-          if ($connection->query($sql) === TRUE) {
-           header("Location: administrador.php");
-             } else {
-           header("Location: administrador.php");
-            }
-           $connection->close();
-        }
 
-    $sql = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 1";
-    $result = mysqli_query($connection, $sql);
-
+    $category =1;
 ?>
 <html lang="en" dir="ltr">
   <head>
@@ -78,7 +65,7 @@
     <div class="header">
         <div class="container">
             <a class="site-logo" href="administrador.php"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
-            <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+            <a href="" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
@@ -94,7 +81,7 @@
                             </div>
                         </profile>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#profile"><?php echo $_SESSION['researcher']->get_full_name_admnistrador(); ?></a></li>
+                            <li><a href="" data-toggle="modal" data-target="#profile"><?php echo $_SESSION['researcher']->get_full_name_admnistrador(); ?></a></li>
                             <li><a href="assets/code/session.php?logout=true">Cerrar Sesión</a></li>
                         </ul>
                     </li>
@@ -103,7 +90,7 @@
                         <span class="sep"></span>
                         <i class="fa fa-search search-btn"></i>
                         <div class="search-box">
-                            <form action="javascript:void(0);">
+                            <form action="">
                                 <div class="input-group">
                                     <input type="text" placeholder="Buscar" class="form-control">
                                     <span class="input-group-btn">
@@ -139,41 +126,47 @@
               <table id="tesis" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Asesor</th>
                         <th>Nombre</th>
                         <th>Tema</th>
-                        <th>Perfil</th>
-                        <th>Acciones</th>
+                        <th>Ver</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>#</th>
                         <th>Asesor</th>
                         <th>Nombre</th>
                         <th>Tema</th>
-                        <th>Perfil</th>
-                        <th>Acciones</th>
+                        <th>Ver</th>
+                        <th>Eliminar</th>
                     </tr>
                 </tfoot>
 
                 <?php
-                echo "<tbody>";
+                get_administrator_thesis($category);
                 while($row = mysqli_fetch_assoc($result)) {
-                  echo "<tr>
-                      <td>" . $row["ResearcherName"]. "</td>
-                      <td>" . $row["ThesisName"]. "</td>
-                      <td>" . $row["TopicName"]. "</td>
-                      <td>" . $row["EducativeProgramName"]. "</td>"
-                      ?>
-                      <td width="200" class="text-center">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#thesisRequest" onclick="seeThesis(<?php echo $row["ThesisID"]; ?>)">Ver</button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#thesisRechazar" onclick="rejectThesis(<?php echo $row["ThesisID"]; ?>)">Rechazar</button>
+                ?>
+                  <tr>
+                      <td><?php echo $row["ThesisID"]?></td>
+                      <td><?php echo $row["ResearcherName"]?></td>
+                      <td><?php echo $row["ThesisName"]?></td>
+                      <td><?php echo $row["TopicName"]?></td>
+                      <td class="text-center">
+                        <button type="button" id="view" class="btn btn-primary"  data-toggle="modal" data-target="#thesisAdministrador" onclick="getThesisDetails(<?php echo $row["ThesisID"]?>)">
+                          <span class="glyphicon glyphicon-eye-open"></span>
+                        </button>
                       </td>
-                      <?php
-                      echo "</tr>";
-              }
-               echo "</tbody>";
-             ?>
+
+                      <td class="text-center">
+                        <button type="button" data-toggle="modal" data-target="#thesisDelete" onclick="headerDeleteID(<?php echo $row["ThesisID"]?>)" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove"> </span>
+                        </button>
+                      </td>
+                    </tr>
+                  <?php } ?>
             </table>
             <br><br><br>
 
@@ -181,56 +174,22 @@
 </div>
 
   </body>
-  <?php include('view-thesis.php'); ?>
-  <?php include('eliminar.php'); ?>
+  <?php include('assets/pages/modals/Administrator/view-thesis.php'); ?>
+  <?php include('assets/pages/modals/Administrator/eliminar.php'); ?>
   <?php include('footer-fixed.php'); ?>
-  <?php include('profile.php'); ?>
+  <?php include('assets/pages/modals/Administrator/profile.php'); ?>
   <!-- Load javascripts at bottom, this will reduce page load time -->
   <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
   <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
   <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
   <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-  <script src="assets\pages\scripts\thesis.js" type="text/javascript"></script>
+  <script type="text/javascript" src="assets/pages/scripts/Administrator/Thesis.js"></script>
   <!-- END CORE PLUGINS -->
   <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
   <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-
   <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-  <script type="text/javascript">
-      $(document).ready(function() {
-        getThesis();
-         $('#tesis').DataTable({
-           "language":
-           {
-             "sZeroRecords":    "No se encontraron resultados",
-             "sProcessing":     "Procesando...",
-             "sLengthMenu":     "Mostrar _MENU_ registros",
-             "sEmptyTable":     "Ningún dato disponible en esta tabla",
-             "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-             "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-             "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-             "sInfoPostFix":    "",
-             "sSearch":         "Buscar:",
-             "sUrl":            "",
-             "sInfoThousands":  ",",
-              "sLoadingRecords": "Cargando...",
-             "oPaginate": {
-                 "sFirst":    "Primero",
-                 "sLast":     "Último",
-                 "sNext":     "Siguiente",
-                 "sPrevious": "Anterior"
-             },
-             "oAria": {
-                 "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-             }
-
-             }
-         });
-      } );
-  </script>
-  <script src="assets\plugins\DataTables\DataTables-1.10.18\js\jquery.dataTables.min.js" type="text/javascript"></script>
+  <script src="assets/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
   <script type="text/javascript">
       jQuery(document).ready(function() {
           Layout.init();

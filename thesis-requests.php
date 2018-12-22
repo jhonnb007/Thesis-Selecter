@@ -48,30 +48,25 @@ if (isset($_POST['btnReject']))
                $connection->close();
         }
 
-$processThesis = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 1";
-$processResult = mysqli_query($connection, $processThesis);
+// $processThesis = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 2";
+// $processResult = mysqli_query($connection, $processThesis);
 
-$rejectedThesis = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 3";
-$rejectedResult = mysqli_query($connection, $rejectedThesis);
+// $rejectedThesis = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = 3";
+// $rejectedResult = mysqli_query($connection, $rejectedThesis);
 ?>
 <html lang="en" dir="ltr">
   <head>
     <?php include('metadata.php'); ?>
     <link href='assets/corporate/img/logos/logo-favicon.png' rel='shortcut icon' type='image/png'>
-
-
-
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
-
     <!-- Global styles START -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
     <link rel="stylesheet" href="assets\plugins\DataTables\DataTables-1.10.18\css\dataTables.bootstrap4.min.css">
     <link href="assets\plugins\DataTables\DataTables-1.10.18\css\jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
@@ -148,7 +143,6 @@ $rejectedResult = mysqli_query($connection, $rejectedThesis);
                 <li><a href="administrador.php">Inicio</a></li>
                 <li class="active">Solicitudes</li>
             </ul>
-
             <div class="row margin-bottom-124">
                 <div class="col-md-12 col-sm-12">
                   <ul class="nav nav-tabs">
@@ -163,104 +157,30 @@ $rejectedResult = mysqli_query($connection, $rejectedThesis);
                 </div>
                 <!-- END CONTENT -->
              </div>
-
-
-
-
-</div>
-</div>
-
-
-
-
+             <br><br>
+        </div>
+    </div>
   </body>
-    <?php include('reject.php'); ?>
-    <?php include('view-thesis-request.php'); ?>
-    <?php include('view-thesis.php'); ?>
-    <?php include('accept.php'); ?>
-    <?php include('revertir.php'); ?>
+    <?php include('assets\pages\modals\Administrator\reject.php'); ?>
+    <?php include('assets\pages\modals\Administrator\view-thesis.php'); ?>
+    <?php include('assets\pages\modals\Administrator\accept.php'); ?>
+    <?php include('assets\pages\modals\Administrator\revertir.php'); ?>
     <?php include('footer-fixed.php'); ?>
-    <?php include('profile.php'); ?>
-
+    <?php include('assets\pages\modals\Administrator\profile.php'); ?>
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-    <script src="assets\pages\scripts\functions.js" type="text/javascript"></script>
-
+    <script src="assets/pages/scripts/Administrator/Requests.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
-
-    <script src="assets\plugins\DataTables\DataTables-1.10.18\js\jquery.dataTables.min.js" type="text/javascript"></script>
-
-
-  <script type="text/javascript">
-     $(document).ready(function()
-      {
-         $('#verificacionTesis').DataTable({
-           "language":
-           {
-             "sZeroRecords":    "No se encontraron resultados",
-             "sProcessing":     "Procesando...",
-             "sLengthMenu":     "Mostrar _MENU_ registros",
-             "sEmptyTable":     "Ningún dato disponible en esta tabla",
-             "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-             "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-             "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-             "sInfoPostFix":    "",
-             "sSearch":         "Buscar:",
-             "sUrl":            "",
-             "sInfoThousands":  ",",
-              "sLoadingRecords": "Cargando...",
-             "oPaginate": {
-                 "sFirst":    "Primero",
-                 "sLast":     "Último",
-                 "sNext":     "Siguiente",
-                 "sPrevious": "Anterior"
-             },
-             "oAria": {
-                 "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-             }
-
-             }
-         });
-
-         $('#rechazadasTesis').DataTable({
-           "language":
-           {
-             "sZeroRecords":    "No se encontraron resultados",
-             "sProcessing":     "Procesando...",
-             "sLengthMenu":     "Mostrar _MENU_ registros",
-             "sEmptyTable":     "Ningún dato disponible en esta tabla",
-             "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-             "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-             "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-             "sInfoPostFix":    "",
-             "sSearch":         "Buscar:",
-             "sUrl":            "",
-             "sInfoThousands":  ",",
-              "sLoadingRecords": "Cargando...",
-             "oPaginate": {
-                 "sFirst":    "Primero",
-                 "sLast":     "Último",
-                 "sNext":     "Siguiente",
-                 "sPrevious": "Anterior"
-             },
-             "oAria": {
-                 "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-             }
-
-             }
-         });
-      } );
-  </script>
-  <script type="text/javascript">
-      jQuery(document).ready(function() {
-          Layout.init();
-          Layout.initUniform();
-      });
-  </script>
-
+    <script src="assets/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            Layout.init();
+            Layout.initUniform();
+        });
+    </script>
 </html>

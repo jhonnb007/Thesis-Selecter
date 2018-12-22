@@ -901,7 +901,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
         <!-- END TABS -->
         </div>
     </div>
-    <?php include('profile-teacher.php') ?>
+    <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>

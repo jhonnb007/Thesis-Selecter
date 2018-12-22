@@ -9,9 +9,6 @@
       <!-- END COPYRIGHT -->
       <!-- BEGIN PAYMENTS -->
 
-      <!-- END PAYMENTS -->
-      <!-- BEGIN POWERED -->
-
       <!-- END POWERED -->
     </div>
   </div>

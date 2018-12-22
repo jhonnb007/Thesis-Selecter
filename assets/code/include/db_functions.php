@@ -8,7 +8,10 @@
 	include_once 'assets/code/educative_program.php';
         include_once 'assets/code/student.php';
 
-  function loginAdmin($emailAdmin, $passwordAdmin)
+
+
+				
+	function loginAdmin($emailAdmin, $passwordAdmin)
   {
   	global $connection;
 		$administrador = new Administrador;
@@ -518,6 +521,16 @@
                 return $status_id;
             }
         }
+
+				function get_administrator_thesis($category)
+				{
+					global $connection, $result;
+					$sql = "SELECT ThesisID, R.ResearcherName, T.ThesisName, TP.TopicName, E.EducativeProgramName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID WHERE Category = '$category'";
+			    $result = mysqli_query($connection, $sql);
+					return $result;
+				}
+
+
 
 
 ?>

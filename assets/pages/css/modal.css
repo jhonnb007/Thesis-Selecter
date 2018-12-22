@@ -16,3 +16,15 @@
 {
   width: 20%; min-width: 350px;
 }
+
+#thesis_name
+{
+    height: 4;
+    min-width: 300px;
+
+}
+
+textarea
+{
+	resize: none;
+}
