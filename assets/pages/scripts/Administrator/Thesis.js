@@ -123,6 +123,25 @@ function getTopic(result)
  });
 }
 
+=======
+    for (var i = 0; i < result.length; i++) {
+        arrayConcat = arrayConcat.concat("<option value="+result[i].SupportID+"> "+result[i].SupportName+"</option>")
+      }
+        $("#support").html(arrayConcat);
+ });
+}
+
+function getTopic(result)
+{
+  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/topic.php", function (result) {
+    var arrayConcat="";
+    for (var i = 0; i < result.length; i++) {
+        arrayConcat = arrayConcat.concat("<option value="+result[i].TopicID+"> "+result[i].TopicName+"</option>")
+      }
+        $("#central_topic").html(arrayConcat);
+ });
+}
+
 function getProfile(result)
 {
   $.getJSON("http://127.0.0.1/thesis-selecter/administrator/student_profile.php", function (result) {
@@ -206,6 +225,7 @@ function postModifyThesis()
    });
 }
 
+
 $(document).ready(function() {
   getThesisTable();
   getThesisDetails(0);
@@ -217,4 +237,5 @@ $(document).ready(function() {
   getTopic();
   postDeleteThesis();
   postModifyThesis();
+
 });
