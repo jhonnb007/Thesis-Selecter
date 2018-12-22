@@ -34,6 +34,7 @@ function getThesisTable()
 }
 function enaledEdit()
 {
+   $("#edit").removeAttr('disabled');
    $("#thesis_name").attr('disabled','disabled');
    $("#thesis_picture").attr('disabled','disabled');
    $("#central_topic").attr('disabled','disabled');
@@ -52,6 +53,7 @@ function enaledEdit()
 
 function editable()
 {
+   $("#edit").attr('disabled','disabled');
    $("#thesis_name").removeAttr('disabled');
    $("#thesis_picture").removeAttr('disabled');
    $("#central_topic").removeAttr('disabled');
@@ -64,6 +66,7 @@ function editable()
    $("#funding_agency").removeAttr('disabled');
    $("#summary").removeAttr('disabled');
    $("#save").removeAttr('disabled');
+
 
 }
 
@@ -173,6 +176,36 @@ function postDeleteThesis()
    });
 }
 
+function postModifyThesis()
+{
+   $("#frm_edit").on("submit", function (e)
+   {
+     e.preventDefault();
+     var id = $("#thesisID").text();
+     var name = $("#thesis_name").val();
+     var topic = $("#central_topic").val();
+     var profile = $("#student_profile").val();
+     var tecnology = $("#tecnology").val();
+     var support = $("#support").val();
+     var agency = $("#funding_agency").val();
+     var summary = $("#summary").val();
+     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+       {
+        modifyID: id,
+        thesisName: name,
+        thesisTopic: topic,
+        thesisProfile: profile,
+        thesisTecnology: tecnology,
+        thesisSupport: support,
+        thesisAgency: agency,
+        thesisSummary: summary
+       },
+        function(){
+        location.href = "administrador.php";
+       });
+   });
+}
+
 $(document).ready(function() {
   getThesisTable();
   getThesisDetails(0);
@@ -183,4 +216,5 @@ $(document).ready(function() {
   getProfile();
   getTopic();
   postDeleteThesis();
+  postModifyThesis();
 });

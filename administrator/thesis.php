@@ -14,6 +14,30 @@
          $connection->close();
       }
 
+      if (isset($_POST['modifyID']))
+          {
+            echo "entro";
+            global $connection;
+            $id= $_POST['modifyID'];
+            $name = $_POST['thesisName'];
+            $topic = $_POST['thesisTopic'];
+            $profile = $_POST['thesisProfile'];
+            $agency = $_POST['thesisAgency'];
+            $tecnology = $_POST['thesisTecnology'];
+            $support = $_POST['thesisSupport'];
+            $summary = $_POST['thesisSummary'];
+            echo $id;
+            echo $name;
+
+            $sql = "UPDATE `thesis` SET `ThesisName` = '$name', `TopicID` = '$topic', `EducativeProgramID` = '$profile', `FundingAgencyAllID` = '$agency', `SupportID` = '$support', `Summary` = '$summary' WHERE `thesis`.`ThesisID` = '$id'";
+            if ($connection->query($sql) === TRUE) {
+             echo "resultado bien";
+               } else {
+                 echo "error";
+              }
+             $connection->close();
+          }
+
    if (isset($_POST['rejectID']))
        {
          global $connection;

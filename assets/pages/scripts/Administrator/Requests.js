@@ -65,6 +65,7 @@ function getRejectedTable()
 
 function enaledEdit()
 {
+   $("#edit").removeAttr('disabled');
    $("#thesis_name").attr('disabled','disabled');
    $("#thesis_picture").attr('disabled','disabled');
    $("#central_topic").attr('disabled','disabled');
@@ -83,6 +84,7 @@ function enaledEdit()
 
 function editable()
 {
+   $("#edit").attr('disabled','disabled');
    $("#thesis_name").removeAttr('disabled');
    $("#thesis_picture").removeAttr('disabled');
    $("#central_topic").removeAttr('disabled');
@@ -95,6 +97,7 @@ function editable()
    $("#funding_agency").removeAttr('disabled');
    $("#summary").removeAttr('disabled');
    $("#save").removeAttr('disabled');
+
 
 }
 
@@ -118,7 +121,7 @@ function getThesisHtml(id, result) {
       $("#thesisID").html(result[i].ThesisID);
       $("#thesis_name").attr("value",result[i].ThesisName);
       $("#thesis_picture").attr("src",result[i].Image);
-      $("#central_topic").attr("value",result[i].TopicName);
+      $("#central_topic").attr("value",result[i].TopicID);
       $("#research_group").attr("value",result[i].ResearchGroupName);
       $("#research_line").attr("value",result[i].ResearchLineName);
       $("#student_profile").attr("value",result[i].EducativeProgramID);
@@ -130,6 +133,28 @@ function getThesisHtml(id, result) {
       $("#summary").attr("value",result[i].Summary);
     }
   }
+}
+
+function getTopic(result)
+{
+  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/topic.php", function (result) {
+    var arrayConcat="";
+    for (var i = 0; i < result.length; i++) {
+        arrayConcat = arrayConcat.concat("<option value="+result[i].TopicID+"> "+result[i].TopicName+"</option>")
+      }
+        $("#central_topic").html(arrayConcat);
+ });
+}
+
+function getProfile(result)
+{
+  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/student_profile.php", function (result) {
+    var arrayConcat="";
+    for (var i = 0; i < result.length; i++) {
+        arrayConcat = arrayConcat.concat("<option value="+result[i].EducativeProgramID+"> "+result[i].EducativeProgramName+"</option>")
+      }
+        $("#student_profile").html(arrayConcat);
+ });
 }
 
 function getSupport(result)
@@ -233,7 +258,39 @@ function postAcceptThesis()
        });
    });
 }
+
+function postModifyThesis()
+{
+   $("#frm_edit").on("submit", function (e)
+   {
+     e.preventDefault();
+     var id = $("#thesisID").text();
+     var name = $("#thesis_name").val();
+     var topic = $("#central_topic").val();
+     var profile = $("#student_profile").val();
+     var tecnology = $("#tecnology").val();
+     var support = $("#support").val();
+     var agency = $("#funding_agency").val();
+     var summary = $("#summary").val();
+     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+       {
+        modifyID: id,
+        thesisName: name,
+        thesisTopic: topic,
+        thesisProfile: profile,
+        thesisTecnology: tecnology,
+        thesisSupport: support,
+        thesisAgency: agency,
+        thesisSummary: summary
+       },
+        function(){
+          location.href = "thesis-requests.php";
+       });
+   });
+}
+
 $(document).ready(function() {
+  postModifyThesis();
   postRejectThesis();
   postAcceptThesis();
   postRevertThesis();
@@ -244,4 +301,6 @@ $(document).ready(function() {
   getSupport();
   getFundingAgency();
   getTecnology();
+  getProfile();
+  getTopic();
 });
