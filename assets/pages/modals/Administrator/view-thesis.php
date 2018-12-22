@@ -12,6 +12,7 @@
         <h5 class="modal-title" id="thesisAdministradorLabel">Tesis # <span id="thesisID"></span></h5>
       </div>
       <div class="modal-body">
+        <form id="editThesis">
         <table class="table table-striped table-hover">
             <tbody>
                 <tr>
@@ -32,15 +33,11 @@
                 </tr>
                 <tr>
                     <td width="34%"><h5><a href="">Tema Central:</a></h5></td>
-                    <td><input type="text" name="topic" class="form form-control" id="central_topic"></td>
+                    <td> <select id="central_topic" class="form form-control" name="topic"></select></td>
                 </tr>
                 <tr>
                     <td><h5><a href="">Perfil de Estudiante:</a></h5></td>
-                    <td><select class="form form-control" name="profile" id="student_profile" value="0">
-                      <option></option>
-                      <option value="1">Ingeniería de Software</option>
-                      <option value="2">Ingeniería en Telemática</option>
-                    </select></td>
+                    <td> <select id="student_profile" class="form form-control" name="profile"></select></td>
                 </tr>
                 <tr>
                     <td><h5><a href="">Tecnologías:</a></h5></td>
@@ -69,6 +66,7 @@
         <button id="save" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
