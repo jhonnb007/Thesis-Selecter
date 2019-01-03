@@ -129,19 +129,15 @@
                 <div class="col-md-12 col-sm-12 ">
                     <h1>Mis Tesis</h1>
                     <div class="row text-right ">
-                      <button type="button" class="btn btn-primary" style="margin-right: 1.5%;" name="button" data-toggle="modal" data-target="#addThesis">Agregar tesis</button>
-
+                      <a href="add-thesis.php" class="btn btn-primary" style="margin-right: 1.5%;" name="button">Agregar tesis</a>
                     </div>
                     <div class="content-page">
                         <div class="row">
-
-
                         </div>
                     </div>
                 </div>
                 <!-- END CONTENT -->
             </div>
-
             <!-- CONTENT -->
             <div class="content">
                 <div class="container-fluid">
@@ -162,7 +158,7 @@
                                                         </h3>
                                                         <span>
                                                         <figure>
-                                                            <a><img style="height: auto; width:100%; padding-top: 10px;" src="<?php echo $thesis->get_image(); ?>" alt="<?php echo $thesis->get_name(); ?>" /></a>
+                                                            <a><img style="height: 245px; width:100%; padding-top: 10px;" src="<?php echo $thesis->get_image(); ?>" alt="<?php echo $thesis->get_name(); ?>" /></a>
                                                         </figure>
                                                         </span>
                                                         </h4>

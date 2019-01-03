@@ -1,6 +1,13 @@
 function getProcessTable()
 {
   $('#verificacionTesis').DataTable({
+    responsive: true,
+            columnDefs: [
+                { responsivePriority: 1, targets: -3 },
+                { responsivePriority: 2, targets: -1 },
+                { responsivePriority: 3, targets: -2 },
+
+            ],
     "language":
     {
       "sZeroRecords":    "No se encontraron resultados",
@@ -34,6 +41,13 @@ function getProcessTable()
 function getRejectedTable()
 {
   $('#rechazadasTesis').DataTable({
+    responsive: true,
+            columnDefs: [
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 2, targets: -1 },
+                { responsivePriority: 3, targets: -2 },
+
+            ],
     "language":
     {
       "sZeroRecords":    "No se encontraron resultados",

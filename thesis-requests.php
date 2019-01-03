@@ -177,6 +177,7 @@ if (isset($_POST['btnReject']))
     <script src="assets/pages/scripts/Administrator/Requests.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
     <script src="assets/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             Layout.init();

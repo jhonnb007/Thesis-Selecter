@@ -46,7 +46,7 @@
                 </tr>
                 <tr>
                     <td><h5><a href="">Tipo de apoyo al alumno:</a></h5></td>
-                    <td> <select id="support" class="form form-control" name="tecnology"></select></td>
+                    <td> <select style="width: 100%" id="support" class="form form-control" name="tecnology"></select></td>
                 </tr>
                 <tr>
                     <td><h5><a href="">Institución financiadora:</a></h5></td>

@@ -64,7 +64,7 @@
                     </h3>
                     <span>
                     <figure>
-                        <a><img style="height: auto; width:100%; padding-top: 10px;" src="<?php echo $_SESSION['thesis']['Image']; ?>" alt="<?php echo $_SESSION['thesis']['ThesisName']; ?>" style="margin-top: 20px;"/></a>
+                        <a><img style="height: 245px; width:100%; padding-top: 10px;" src="<?php echo $_SESSION['thesis']['Image']; ?>" alt="<?php echo $_SESSION['thesis']['ThesisName']; ?>" style="margin-top: 20px;"/></a>
                     </figure>
                     </span>
                     </h4>
