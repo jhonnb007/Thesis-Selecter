@@ -72,24 +72,24 @@
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="administrador.php"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
-                    <li class="active"><a href="administrador.php">Tesis</a></li>
-                    <li><a href="thesis-requests.php">Solicitudes de Tesis</a></li>
-
+                    <li><a href="/thesis-selecter">Tesis</a></li>
+                    <li class="active"><a href="my-theses.php">Mis Tesis</a></li>
+                    <li><a href="requests.php">Solicitudes</a></li>
                     <li class="dropdown">
                         <profile>
                             <div class="testimonials-v1 dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                                 <div class="carousel-info">
-                                    <img class="pull-left" src="<?php echo $_SESSION['researcher']->get_image_profile_administrador();?>" alt="avatar-small">
+                                    <img class="pull-left" src="<?php echo $_SESSION['researcher']->get_image_profile();?>" alt="avatar-small">
                                 </div>
                             </div>
                         </profile>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#profile"><?php echo $_SESSION['researcher']->get_full_name_admnistrador(); ?></a></li>
+                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#profileTeacher"><?php echo $_SESSION['researcher']->get_full_name(); ?></a></li>
                             <li><a href="assets/code/session.php?logout=true">Cerrar Sesión</a></li>
                         </ul>
                     </li>
@@ -119,23 +119,16 @@
     <div class="main">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="administrador.php">Inicio</a></li>
-                <li class="active">Modificar Tesis</li>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="my-theses.php">Mis Tesis</a></li>
+                <li class="active">Agregar Tesis</li>
             </ul>
             <!-- BEGIN SIDEBAR & CONTENT -->
             <div class="row margin-bottom-60">
-                <!-- BEGIN SIDEBAR -->
-                <div class="sidebar col-md-3 col-sm-3">
-                    <ul class="list-group margin-bottom-25 sidebar-menu">
-                        <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Modificar Tesis</a></li>
-                        <!--<li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Restaurar contraseña</a></li>-->
-                    </ul>
-                </div>
-                <!-- END SIDEBAR -->
                 <!-- BEGIN CONTENT -->
                 <form class="form-horizontal form-without-legend" role="form" method="post">
-                  <div class="form-group text-center">
-                      <h2>Modificar</h2>
+                  <div class="col-md-12">
+                      <h2>Agregar Tesis</h2>
                   </div>
                     <div class="form-group">
                         <label for="addThesisName" class="col-lg-4 control-label">Nombre de tesis: <span class="require">*</span></label>
@@ -205,8 +198,8 @@
                         </div>
                     </div>
                     <div class="row text-right">
-                        <button type="submit" class="btn btn-primary" onclick="location.href='administrador.php'">Aplicar</button>
-                        <button type="button" class="btn btn-secondary" onclick="location.href='administrador.php'">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" onclick="location.href='index.php'">Aplicar</button>
+                        <button type="button" class="btn btn-secondary" onclick="location.href='index.php'">Cerrar</button>
                     </div>
 
               </div>
@@ -217,10 +210,6 @@
                 <!-- END CONTENT -->
 
             <!-- END SIDEBAR & CONTENT -->
-
-
-    <?php include('login-administrador.php')?>
-
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->

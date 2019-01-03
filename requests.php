@@ -251,6 +251,7 @@
                                                                 <th>Correo electrónico</th>
                                                                 <th>Facultad</th>
                                                                 <th>Carrera</th>
+                                                                <th>Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <!-- LISTING -->
@@ -264,6 +265,9 @@
                                                                     <td><?php echo $studentsAc->get_email(); ?></td>
                                                                     <td><?php echo $studentsAc->get_school(); ?></td>
                                                                     <td><?php echo $studentsAc->get_educative_program(); ?></td>
+                                                                    <td><div class="btn-group btn-group-xs" role="group" aria-label="...">
+                                                                        <button type="button" class="btn btn-default">Revertir</button>
+                                                                    </div> </td>
                                                                 </tr>
                                                             </tbody>
                                                             <?php $i++; endforeach; ?>

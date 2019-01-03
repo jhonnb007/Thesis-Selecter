@@ -8,11 +8,11 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="profileLabel">Perfil</h4>
+        <h6 class="modal-title" id="profileLabel">Perfil</h6>
       </div>
       <div class="modal-body">
         <div class="row text-center margin-bottom-20">
-          <img src="<?php echo $_SESSION['researcher']->get_image_profile_administrador();?>" class="rounded mx-auto d-block" alt="" style="width:150px; height: auto;">
+          <img src="<?php echo $_SESSION['researcher']->get_image_profile_administrador();?>" class="profilePicture" alt="">
         </div>
         <table class="table table-striped table-hover">
             <tbody>

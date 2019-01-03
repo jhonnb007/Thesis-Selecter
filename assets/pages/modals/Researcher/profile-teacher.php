@@ -8,7 +8,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="profileTeacherLabel">Perfil</h4>
+        <h6 class="modal-title" id="profileTeacherLabel">Perfil</h6>
       </div>
       <div class="modal-body">
         <div class="row text-center margin-bottom-20">

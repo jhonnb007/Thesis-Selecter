@@ -2,6 +2,13 @@
 function getThesisTable()
 {
   $('#tesis').DataTable({
+    responsive: true,
+            columnDefs: [
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 2, targets: -1 },
+                { responsivePriority: 3, targets: -2 },
+                
+            ],
     "language":
     {
       "sZeroRecords":    "No se encontraron resultados",
@@ -112,24 +119,7 @@ function getSupport(result)
  });
 }
 
-function getTopic(result)
-{
-  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/topic.php", function (result) {
-    var arrayConcat="";
-    for (var i = 0; i < result.length; i++) {
-        arrayConcat = arrayConcat.concat("<option value="+result[i].TopicID+"> "+result[i].TopicName+"</option>")
-      }
-        $("#central_topic").html(arrayConcat);
- });
-}
 
-=======
-    for (var i = 0; i < result.length; i++) {
-        arrayConcat = arrayConcat.concat("<option value="+result[i].SupportID+"> "+result[i].SupportName+"</option>")
-      }
-        $("#support").html(arrayConcat);
- });
-}
 
 function getTopic(result)
 {
