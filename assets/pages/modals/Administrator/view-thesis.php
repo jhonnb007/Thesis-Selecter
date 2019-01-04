@@ -28,7 +28,7 @@
                   <div class="form-group">
                       <tr>
                     <td><h5><a href="">Nombre:</a></h5></td>
-                    <td> <textarea id="thesis_name" name="name" class="form form-control" rows="2" style="width:100%;"></textarea> </td>
+                    <td> <textarea id="thesis_name" name="name" class="form form-control" rows="2"></textarea> </td>
                        </tr>
                   </div>
 
