@@ -124,26 +124,26 @@
                 <li class="active">Agregar Tesis</li>
             </ul>
             <!-- BEGIN SIDEBAR & CONTENT -->
-            <div class="row margin-bottom-60">
+            <div class="row margin-bottom-60 ">
                 <!-- BEGIN CONTENT -->
                 <form class="form-horizontal form-without-legend" role="form" method="post">
                   <div class="col-md-12">
                       <h2>Agregar Tesis</h2>
                   </div>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12">
                         <label for="addThesisName" class="col-lg-4 control-label">Nombre de tesis: <span class="require">*</span></label>
                         <div class="col-lg-8">
                             <input type="text" class="form-control" id="addThesisName" name="addThesisName" required="required">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12">
                         <label for="addThesisTopic" class="col-lg-4 control-label">Tema Central: <span class="require">*</span></label>
                         <div class="col-lg-8">
                             <input type="text" class="form-control" id="addThesisTopic" name="addThesisTopic" required="required">
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-sm-12">
                         <label for="addThesisPlaza" class="col-lg-4 control-label">Alumnos requeridos: <span class="require">*</span></label>
                         <div class="col-lg-8">
                           <select class="form-control" id="addThesisPlaza" name="addThesisPlaza" required="required">
@@ -153,7 +153,7 @@
                           </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12">
                         <label for="addThesisProfile" class="col-lg-4 control-label">Perfil de Estudiante: <span class="require">*</span></label>
                         <div class="col-lg-8">
                             <select class="form-control" id="addThesisTopic" name="addThesisProfile" required="required">
@@ -162,7 +162,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12">
                         <label for="addThesisSupport" class="col-lg-4 control-label">Tipo de apoyo: <span class="require">*</span></label>
                         <div class="col-lg-8">
                             <select class="form-control" id="addThesisSupport" name="addThesisSupport" required="required">
@@ -179,7 +179,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12">
                         <label for="addThesisAgency" class="col-lg-4 control-label">Institución financiadora: <span class="require">*</span></label>
                         <div class="col-lg-8">
                             <select class="form-control" id="addThesisAgency" name="addThesisAgency" required="required">
@@ -191,13 +191,13 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12">
                         <label for="addThesisSummary" class="col-lg-4 control-label">Resumen: <span class="require">*</span></label>
                         <div class="col-lg-8">
                             <textarea class="form-control" id="addThesisSummary" name="addThesisSummary" required="required" rows="8" cols="80"></textarea>
                         </div>
                     </div>
-                    <div class="row text-right">
+                    <div class="row text-right col-sm-12">
                         <button type="submit" class="btn btn-primary" onclick="location.href='index.php'">Aplicar</button>
                         <button type="button" class="btn btn-secondary" onclick="location.href='index.php'">Cerrar</button>
                     </div>
