@@ -118,7 +118,7 @@ function editable()
 function getThesisDetails(id)
 {
 
-  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/process_thesis.php", function (result) {
+  $.getJSON("administrator/process_thesis.php", function (result) {
     console.log(id);
     console.log(result);
    getThesisHtml(id, result);
@@ -151,7 +151,7 @@ function getThesisHtml(id, result) {
 
 function getTopic(result)
 {
-  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/topic.php", function (result) {
+  $.getJSON("administrator/topic.php", function (result) {
     var arrayConcat="";
     for (var i = 0; i < result.length; i++) {
         arrayConcat = arrayConcat.concat("<option value="+result[i].TopicID+"> "+result[i].TopicName+"</option>")
@@ -162,7 +162,7 @@ function getTopic(result)
 
 function getProfile(result)
 {
-  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/student_profile.php", function (result) {
+  $.getJSON("administrator/student_profile.php", function (result) {
     var arrayConcat="";
     for (var i = 0; i < result.length; i++) {
         arrayConcat = arrayConcat.concat("<option value="+result[i].EducativeProgramID+"> "+result[i].EducativeProgramName+"</option>")
@@ -173,7 +173,7 @@ function getProfile(result)
 
 function getSupport(result)
 {
-  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/details.php", function (result) {
+  $.getJSON("administrator/details.php", function (result) {
     var support="";
     for (var i = 0; i < result.length; i++) {
         support = support.concat("<option value="+result[i].SupportID+"> "+result[i].SupportName+"</option>")
@@ -184,7 +184,7 @@ function getSupport(result)
 
 function getFundingAgency(result)
 {
-  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/funding_agency.php", function (result) {
+  $.getJSON("administrator/funding_agency.php", function (result) {
     var arrayConcat="";
     for (var i = 0; i < result.length; i++) {
         arrayConcat = arrayConcat.concat("<option value="+result[i].FundingAgencyAllID+"> "+result[i].FundingAgencyAllName+"</option>")
@@ -195,7 +195,7 @@ function getFundingAgency(result)
 
 function getTecnology(result)
 {
-  $.getJSON("http://127.0.0.1/thesis-selecter/administrator/requirements.php", function (result) {
+  $.getJSON("administrator/requirements.php", function (result) {
     var arrayConcat="";
     for (var i = 0; i < result.length; i++) {
         arrayConcat = arrayConcat.concat("<option value="+result[i].RequirementsID+"> "+result[i].RequirementsName+"</option>")
@@ -229,7 +229,7 @@ function postRevertThesis()
      e.preventDefault();
      var id = $("#thesisID_Revert").text();
      console.log(id);
-     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+     $.post("administrator/thesis.php",
        {
         revertID: id
        },
@@ -246,7 +246,7 @@ function postRejectThesis()
      e.preventDefault();
      var id = $("#thesisID_Reject").text();
      console.log(id);
-     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+     $.post("administrator/thesis.php",
        {
         rejectID: id
        },
@@ -263,7 +263,7 @@ function postAcceptThesis()
      e.preventDefault();
      var id = $("#thesisID_Accept").text();
      console.log(id);
-     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+     $.post("administrator/thesis.php",
        {
         acceptID: id
        },
@@ -286,7 +286,7 @@ function postModifyThesis()
      var support = $("#support").val();
      var agency = $("#funding_agency").val();
      var summary = $("#summary").val();
-     $.post("http://127.0.0.1/thesis-selecter/administrator/thesis.php",
+     $.post("administrator/thesis.php",
        {
         modifyID: id,
         thesisName: name,
