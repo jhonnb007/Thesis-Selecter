@@ -18,11 +18,11 @@
             <tbody>
                 <tr>
                     <td><h5><a href="javascript:;">Nombre:</a></h5></td>
-                    <td><?php echo $_SESSION['researcher']->get_full_name(); ?></td>
+                    <td id="researchID"><?php echo $_SESSION['researcher']->get_full_name(); ?></td>
                 </tr>
                 <tr>
                     <td><h5><a href="javascript:;">Correo:</a></h5></td>
-                    <td><?php echo $_SESSION['researcher']->get_email(); ?></td>
+                    <td id="email"><?php echo $_SESSION['researcher']->get_email(); ?></td>
                 </tr>
                 <tr>
                     <td><h5><a href="javascript:;">Dependencia:</a></h5></td>
@@ -38,11 +38,11 @@
                 </tr>
                 <tr>
                     <td><h5><a href="javascript:;">Grupo de investigacion:</a></h5></td>
-                    <td><?php echo $_SESSION['researcher']->get_research_group_key() . "" . $_SESSION['researcher']->get_research_group();?></td>
+                    <td id="groupID"><?php echo $_SESSION['researcher']->get_research_group_key() . "" . $_SESSION['researcher']->get_research_group();?></td>
                 </tr>
                 <tr>
                     <td><h5><a href="javascript:;">linea de investigacion:</a></h5></td>
-                    <td><?php echo $_SESSION['researcher']->get_research_line(); ?></td>
+                    <td id="lineID"><?php echo $_SESSION['researcher']->get_research_line(); ?></td>
                 </tr>
             </tbody>
         </table>

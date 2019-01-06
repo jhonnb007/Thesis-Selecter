@@ -89,7 +89,7 @@
                             </div>
                         </profile>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#profileTeacher"><?php echo $_SESSION['researcher']->get_full_name(); ?></a></li>
+                          <li><a href="javascript:void(0);" data-toggle="modal" data-target="#profileTeacher" ><?php echo $_SESSION['researcher']->get_full_name(); ?></a></li>
                             <li><a href="assets/code/session.php?logout=true">Cerrar Sesión</a></li>
                         </ul>
                     </li>
@@ -126,7 +126,7 @@
             <!-- BEGIN SIDEBAR & CONTENT -->
             <div class="row margin-bottom-60 ">
                 <!-- BEGIN CONTENT -->
-                <form class="form-horizontal form-without-legend" role="form" method="post">
+                <form class="form-horizontal form-without-legend" id="frm_add">
                   <div class="col-md-12">
                       <h2>Agregar Tesis</h2>
                   </div>
@@ -139,7 +139,7 @@
                     <div class="form-group col-sm-12">
                         <label for="addThesisTopic" class="col-lg-4 control-label">Tema Central: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                            <input type="text" class="form-control" id="addThesisTopic" name="addThesisTopic" required="required">
+                          <select class="form-control" id="addThesisTopic" name="addThesisTopic" required="required"></select>
                         </div>
                     </div>
 
@@ -147,49 +147,42 @@
                         <label for="addThesisPlaza" class="col-lg-4 control-label">Alumnos requeridos: <span class="require">*</span></label>
                         <div class="col-lg-8">
                           <select class="form-control" id="addThesisPlaza" name="addThesisPlaza" required="required">
-                            <option value="1">Uno</option>
-                            <option value="2">Dos</option>
-                            <option value="3">Tres</option>
+                              <option></option>
+                              <option value="1">Uno</option>
+                              <option value="2">Dos</option>
+                              <option value="3">Tres</option>
                           </select>
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="addThesisProfile" class="col-lg-4 control-label">Perfil de Estudiante: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                            <select class="form-control" id="addThesisTopic" name="addThesisProfile" required="required">
-                              <option value="1">Ingenieria en Telematica</option>
-                              <option value="2">Ingenieria de Software</option>
-                            </select>
+                            <select class="form-control" id="addThesisProfile" name="addThesisProfile" required="required"></select>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="addThesisProfile" class="col-lg-4 control-label">Tecnologías: <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <select class="form-control" id="addThesisTecnology" name="addThesisTecnology" required="required"></select>
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="addThesisSupport" class="col-lg-4 control-label">Tipo de apoyo: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                            <select class="form-control" id="addThesisSupport" name="addThesisSupport" required="required">
-                              <option value="1">N/A</option>
-                              <option value="2">Equipo de cómputo, materiales y espacio de trabajo</option>
-                              <option value="3">Equipo de cómputo y materiales</option>
-                              <option value="4">Equipo de cómputo</option>
-                              <option value="5">PRODEP</option>
-                              <option value="7">Movilidad</option>
-                              <option value="8">Espacio de trabajo</option>
-                              <option value="9">Beca</option>
-                              <option value="10">Pago de publicaciones</option>
-                              <option value="11">Materiales</option>
-                            </select>
+                            <select class="form-control" id="addThesisSupport" name="addThesisSupport" required="required"></select>
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="addThesisAgency" class="col-lg-4 control-label">Institución financiadora: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                            <select class="form-control" id="addThesisAgency" name="addThesisAgency" required="required">
-                              <option value="1">N/A</option>
-                              <option value="2">PRODEP</option>
-                              <option value="3">Universidad de Colima</option>
-                              <option value="4">CONACYT</option>
-                              <option value="5"> Empresa privada</option>
-                            </select>
+                            <select class="form-control" id="addThesisAgency" name="addThesisAgency" required="required"></select>
                         </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+                      <label for="addPicture" class="col-lg-4 control-label">Imagen: <span class="require">*</span></label>
+                      <div class="col-lg-8 div-input">
+                         <input id="addThesisPicture" name="addThesisPicture" required="required" type="file" class="filestyle" data-text="Explorar">
+                      </div>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="addThesisSummary" class="col-lg-4 control-label">Resumen: <span class="require">*</span></label>
@@ -198,7 +191,7 @@
                         </div>
                     </div>
                     <div class="row text-right col-sm-12">
-                        <button type="submit" class="btn btn-primary" onclick="location.href='index.php'">Aplicar</button>
+                        <button type="submit" class="btn btn-primary">Aplicar</button>
                         <button type="button" class="btn btn-secondary" onclick="location.href='index.php'">Cerrar</button>
                     </div>
 
@@ -208,8 +201,10 @@
           </div>
         </form>
                 <!-- END CONTENT -->
-
             <!-- END SIDEBAR & CONTENT -->
+        <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+
+
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->
@@ -226,9 +221,10 @@
     <!-- END CORE PLUGINS -->
 
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="assets/pages/scripts/Researcher/addThesis.js" type="text/javascript"></script>
     <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
     <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-
+    <script src="assets/plugins/bootstrap-filestyle/src/bootstrap-filestyle.min.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
