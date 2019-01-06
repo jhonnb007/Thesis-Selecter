@@ -188,7 +188,7 @@
     <?php include('assets/pages/modals/Researcher/add-thesis.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
-        <?php include('footer.php'); ?>
+        <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->

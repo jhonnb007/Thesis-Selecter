@@ -26,8 +26,6 @@
             $tecnology = $_POST['thesisTecnology'];
             $support = $_POST['thesisSupport'];
             $summary = $_POST['thesisSummary'];
-            echo $id;
-            echo $name;
 
             $sql = "UPDATE `thesis` SET `ThesisName` = '$name', `TopicID` = '$topic', `EducativeProgramID` = '$profile', `FundingAgencyAllID` = '$agency', `SupportID` = '$support', `Summary` = '$summary' WHERE `thesis`.`ThesisID` = '$id'";
             if ($connection->query($sql) === TRUE) {
