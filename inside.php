@@ -173,7 +173,7 @@
                         <div class="row margin-bottom-10 margin-top-10">
                             <div class="col-lg-4 col-lg-offset-4 gallery-item">
                                 <a data-rel="fancybox-button" title="<?php echo $_SESSION['thesis']->get_name();?>" href="<?php echo $_SESSION['thesis']->get_image_in();?>" class="fancybox-button">
-                                    <img alt="<?php echo $_SESSION['thesis']->get_name();?>" src="<?php echo $_SESSION['thesis']->get_image_in();?>" class="img-responsive">
+                                    <img style="height:250px; width:100%;" alt="<?php echo $_SESSION['thesis']->get_name();?>" src="<?php echo $_SESSION['thesis']->get_image_in();?>" class="img-responsive">
                                     <div class="zoomix"><i class="fa fa-search"></i></div>
                                 </a>
                             </div>
