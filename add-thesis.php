@@ -1,12 +1,50 @@
 <?php
     include_once 'assets/code/include/db_connection.php';
     include_once 'assets/code/include/db_functions.php';
-
     session_start();
-
     if (!isset($_SESSION['researcher']))
     {
         header("Location: error-permission.php");
+    }
+    if (isset($_FILES['addThesisPicture']))
+    {
+      global $connection;
+      $action = $_SESSION['researcher']->get_email();
+      echo $action;
+      $sql = "SELECT ResearcherID, ResearchLineID, ResearchGroupID FROM researcher where EmailAddress = '$action'";
+      $result = $connection->query($sql);
+      if ($result->num_rows > 0) {
+           while($row = $result->fetch_assoc()) {
+             $researcher = $row['ResearcherID'];
+             $group = $row['ResearchGroupID'];
+             $line = $row['ResearchLineID'];
+        }
+      }
+      $name = $_POST['addThesisName'];
+      $topic = $_POST['addThesisTopic'];
+      $plazas = $_POST['addThesisPlaza'];
+      $profile = $_POST['addThesisProfile'];
+      $agency = $_POST['addThesisAgency'];
+      $tecnology = $_POST['addThesisTecnology'];
+      $support = $_POST['addThesisSupport'];
+      $summary = $_POST['addThesisSummary'];
+      $foto=$_FILES["addThesisPicture"]["name"];
+      $ruta=$_FILES["addThesisPicture"]["tmp_name"];
+      $picture="assets/pages/img/thesis/".$foto;
+      move_uploaded_file($ruta,$picture);
+      $sql = "INSERT INTO `thesis` (`ThesisID`, `ThesisName`, `LevelID`, `PlazasID`, `ResearcherID`, `StatusID`, `TopicID`, `EducativeProgramID`, `FundingAgencyID`, `FundingAgencyAllID`, `ResearchGroupID`, `ResearchLineID`, `SupportID`, `ProjectID`, `RequirementsID`, `SscID`, `Assigned`, `Summary`, `Category`, `Image`, `ImageIn`) VALUES (NULL, '$name', '2', '$plazas', '$researcher', '1', '$topic', '$profile', '2', '$agency', '$group', '$line', '$support', NULL, '$tecnology', NULL, '0', '$summary', '2', '$picture', '$picture')";
+      if ($connection->query($sql) === TRUE) {
+        echo "<SCRIPT>
+               alert('Aviso!, Solicitud enviada para aprobación');
+             </SCRIPT>";
+        header("location: my-theses.php");
+         } else {
+           echo "<SCRIPT>
+                  alert('Aviso!, error al ingresar datos');
+                </SCRIPT>";
+           header("location: my-theses.php");
+        }
+       $connection->close();
     }
 
 ?>
@@ -126,7 +164,7 @@
             <!-- BEGIN SIDEBAR & CONTENT -->
             <div class="row margin-bottom-60 ">
                 <!-- BEGIN CONTENT -->
-                <form class="form-horizontal form-without-legend" id="frm_add">
+                <form action="add-thesis.php"enctype="multipart/form-data" class="form-horizontal form-without-legend"  method="post">
                   <div class="col-md-12">
                       <h2>Agregar Tesis</h2>
                   </div>
@@ -181,8 +219,7 @@
                     <div class="form-group col-sm-12">
                       <label for="addPicture" class="col-lg-4 control-label">Imagen: <span class="require">*</span></label>
                       <div class="col-lg-8 div-input">
-                         <input id="addThesisPicture" name="addThesisPicture" required="required" type="file" class="filestyle" data-text="Explorar">
-                      </div>
+                         <input id="addThesisPicture" name="addThesisPicture" required="required" type="file" class="filestyle" data-text="Explorar">                      </div>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="addThesisSummary" class="col-lg-4 control-label">Resumen: <span class="require">*</span></label>
