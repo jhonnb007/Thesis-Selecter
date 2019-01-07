@@ -144,7 +144,7 @@
                     <form action="tabs.php" role="form" method="post" id="search_form">
                         <div class="row">
                             <section class="">
-                                <div class="row">
+                                <div class="row margin-bottom-50">
                                     <!-- LISTING -->
                                     <?php if(isset($theses) && count($theses) && $rowcount > 0) : $i = 0; ?>
                                         <?php foreach ($theses as $thesis) : ?>
@@ -188,7 +188,7 @@
     <?php include('assets/pages/modals/Researcher/add-thesis.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
-        <?php include('footer-fixed.php'); ?>
+    <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->
@@ -201,10 +201,8 @@
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
-
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
     <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {

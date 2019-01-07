@@ -76,36 +76,17 @@ function postAddThesis(id, lineID, groupID)
   $("#frm_add").on("submit", function (e)
   {
     e.preventDefault();
-    var name = $('#addThesisName').val();
-    console.log(name);
-    var topic =$('#addThesisTopic').val();
-    var plaza = $('#addThesisPlaza').val();
-    var profile =$('#addThesisProfile').val();
-    var tecnology = $('#addThesisTecnology').val();
-    var support =$('#addThesisSupport').val();
-    var agency =$('#addThesisAgency').val();
-    var picture = $('#addThesisPicture').val();
-    console.log(picture);
-    var summary =$('#addThesisSummary').val();
-    $.post("administrator/add_thesis.php",
-      {
-       addThesisName: name,
-       addThesisTopic: topic,
-       addThesisPlaza: plaza,
-       addThesisProfile: profile,
-       addThesisTecnology: tecnology,
-       addThesisSupport: support,
-       addThesisAgency: agency,
-       addThesisPicture: picture,
-       addThesisSummary: summary,
-       researcherID: id,
-       lineID : lineID,
-       groupID: groupID
-      },
-       function(result){
-         alert(result);
-         location.href = "my-theses.php";
-      });
+    $.ajax({
+        url: "administrador/add_thesis.php",
+        type: "POST",
+        data:  new FormData(this),
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(data){
+            console.log(data);
+        }
+    });
   });
 }
 $(document).ready(function()
