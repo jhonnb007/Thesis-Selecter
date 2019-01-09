@@ -76,9 +76,9 @@ if (!isset($_SESSION['researcher']))
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
                     <li><a href="/thesis-selecter">Tesis</a></li>
-                    <li class="active"><a href="my-theses.php">Mis Tesis</a></li>
+                    <li><a href="my-theses.php">Mis Tesis</a></li>
                     <li><a href="requests.php">Solicitudes</a></li>
-                    <li class="dropdown">
+                    <li class="active dropdown">
                         <profile>
                             <div class="testimonials-v1 dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                                 <div class="carousel-info">
@@ -119,44 +119,32 @@ if (!isset($_SESSION['researcher']))
         <div class="container">
 
             <!-- BEGIN SIDEBAR & CONTENT -->
-            <div class="row">
+            <div class="row margin-bottom-50">
                 <!-- BEGIN CONTENT -->
                 <div class="col-md-12 col-sm-12">
-                    <div class="content-page page-500 text-center">
-
-                        <img alt="" style="margin-top: -45px; margin-left: auto; margin-right: auto; height: 20%; width: 20%;" src="assets/pages/img/works/success.png" >
-
-                        <h2 style="color: #44b1c1">
-                            <strong>¡Solicitud enviada correctamente!</strong>
-                        </h2>
-
-                       <div class="details">
-                            <h3 class="text-center">Tu solicitud ha sido enviada con éxito.</h3>
-                        <p>
-                            La solicitud de Tesis se envio correctamente al administrador.
-                        <p class="text-center" style="margin-top: -15px; margin-bottom: -10px;">
-                            Una vez aceptada, aparecerá en la plataforma para su selección.
-                        </p>
-
-                       </div>
+                    <div class="content-page page-404">
+                        <div class="number">
+                            404
+                        </div>
+                        <div class="details">
+                            <h3>Oops!  Algo salió mal.</h3>
+                            <p>
+                                ¡Error al cambiar contraseña!<br>
+                                Por favor vuelve a intentarlo.
+                                <a href="/thesis-selecter" class="link">Regresa al inicio.</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <!-- END CONTENT -->
             </div>
             <!-- END SIDEBAR & CONTENT -->
 
-            <div class="row margin-bottom-60">
-                <div class="col-lg-4 col-lg-offset-4 text-center margin-bottom-40" style="margin-top: -50px">
-                    <button onclick="window.location.href='/thesis-selecter'" class="btn btn-primary">¡Entendido!</button>
-                </div>
-            </div>
-
         </div>
     </div>
     <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
-
     <!-- BEGIN PRE-FOOTER -->
-        <?php include('footer.php'); ?>
+        <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->
