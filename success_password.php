@@ -76,9 +76,9 @@ if (!isset($_SESSION['researcher']))
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
                     <li><a href="/thesis-selecter">Tesis</a></li>
-                    <li class="active"><a href="my-theses.php">Mis Tesis</a></li>
+                    <li><a href="my-theses.php">Mis Tesis</a></li>
                     <li><a href="requests.php">Solicitudes</a></li>
-                    <li class="dropdown">
+                    <li class="active dropdown">
                         <profile>
                             <div class="testimonials-v1 dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                                 <div class="carousel-info">
@@ -127,16 +127,11 @@ if (!isset($_SESSION['researcher']))
                         <img alt="" style="margin-top: -45px; margin-left: auto; margin-right: auto; height: 20%; width: 20%;" src="assets/pages/img/works/success.png" >
 
                         <h2 style="color: #44b1c1">
-                            <strong>¡Solicitud enviada correctamente!</strong>
+                            <strong>¡Contraseña actualizada!</strong>
                         </h2>
 
                        <div class="details">
-                            <h3 class="text-center">Tu solicitud ha sido enviada con éxito.</h3>
-                        <p>
-                            La solicitud de Tesis se envio correctamente al administrador.
-                        <p class="text-center" style="margin-top: -15px; margin-bottom: -10px;">
-                            Una vez aceptada, aparecerá en la plataforma para su selección.
-                        </p>
+                            <h3 class="text-center">Tu ha sido actualizada con éxito.</h3>
 
                        </div>
                     </div>
@@ -156,7 +151,7 @@ if (!isset($_SESSION['researcher']))
     <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
-        <?php include('footer.php'); ?>
+        <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->

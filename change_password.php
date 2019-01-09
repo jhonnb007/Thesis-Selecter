@@ -1,17 +1,56 @@
 <?php
-include_once 'assets/code/include/db_connection.php';
-include_once 'assets/code/include/db_functions.php';
-session_start();
-if (!isset($_SESSION['researcher']))
-{
-    header("Location: error-permission.php");
-}
+  include_once 'assets/code/include/db_connection.php';
+  include_once 'assets/code/include/db_functions.php';
+  session_start();
+  if (!isset($_SESSION['researcher']))
+  {
+      header("Location: error-permission.php");
+  }
+  if (isset($_POST['oldPwd'], $_POST['newPwd'], $_POST['confPwd']))
+  {
+    if (!empty($_POST['oldPwd'] && $_POST['newPwd'] && $_POST['confPwd']))
+    {
+      if ($_POST['newPwd']==$_POST['confPwd'])
+      {
+        global $connection;
+        $action = $_SESSION['researcher']->get_email();
+        $sql = "SELECT ResearcherID, EmailPassword FROM researcher where EmailAddress = '$action'";
+        $result = $connection->query($sql);
+        if ($result->num_rows > 0) {
+             while($row = $result->fetch_assoc()) {
+               $researcher = $row['ResearcherID'];
+               $password = $row['EmailPassword'];
+          }
+        }
+        if ($password==$_POST['oldPwd'])
+        {
+          $pwd = $_POST['newPwd'];
+          $sql = "UPDATE researcher SET EmailPassword='$pwd' WHERE ResearcherID=$researcher";
+          if ($connection->query($sql) === TRUE) {
+             header('location: success_password.php');
+             } else {
+               header('location: error_password.php');
+
+            }
+           $connection->close();
+        } else {
+          header('location: error_password.php');
+        }
+
+      }else {
+        header('location: error_password.php');
+      }
+
+    }else {
+      header('location: error_password.php');
+    }
+  }
 ?>
 <!DOCTYPE html>
 <!--
 --
--- Developed by: Ing. Jorge Luis Aguirre Martínez & Ing. Alan Ulises Montes Rodríguez
--- © November 2, 2017 Derechos Reservados, Universidad de Colima.
+-- Developed by: Ing. Jose Angel Torres Martinez
+-- © December 20, 2018 Derechos Reservados, Universidad de Colima.
 --
 -->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -36,12 +75,12 @@ if (!isset($_SESSION['researcher']))
 
     <!-- Page level plugin styles START -->
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
     <link href="assets/pages/css/components.css" rel="stylesheet">
     <link href="assets/corporate/css/style.css" rel="stylesheet">
-    <link href="assets/pages/css/gallery.css" rel="stylesheet">
     <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
     <link href="assets/corporate/css/themes/turquoise.css" rel="stylesheet" id="style-color">
     <link href="assets/corporate/css/custom.css" rel="stylesheet">
@@ -67,7 +106,6 @@ if (!isset($_SESSION['researcher']))
     <!-- END TOP BAR -->
 
     <!-- BEGIN HEADER -->
-    <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
             <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
@@ -76,9 +114,9 @@ if (!isset($_SESSION['researcher']))
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
                     <li><a href="/thesis-selecter">Tesis</a></li>
-                    <li class="active"><a href="my-theses.php">Mis Tesis</a></li>
+                    <li><a href="my-theses.php">Mis Tesis</a></li>
                     <li><a href="requests.php">Solicitudes</a></li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <profile>
                             <div class="testimonials-v1 dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                                 <div class="carousel-info">
@@ -114,49 +152,52 @@ if (!isset($_SESSION['researcher']))
     </div>
     <!-- Header END -->
 
-
     <div class="main">
         <div class="container">
-
+            <ul class="breadcrumb">
+                <li><a href="index.php">Inicio</a></li>
+                <li class="active">Cambiar Contraseña</li>
+            </ul>
             <!-- BEGIN SIDEBAR & CONTENT -->
-            <div class="row">
+            <div class="row margin-bottom-60 ">
                 <!-- BEGIN CONTENT -->
-                <div class="col-md-12 col-sm-12">
-                    <div class="content-page page-500 text-center">
-
-                        <img alt="" style="margin-top: -45px; margin-left: auto; margin-right: auto; height: 20%; width: 20%;" src="assets/pages/img/works/success.png" >
-
-                        <h2 style="color: #44b1c1">
-                            <strong>¡Solicitud enviada correctamente!</strong>
-                        </h2>
-
-                       <div class="details">
-                            <h3 class="text-center">Tu solicitud ha sido enviada con éxito.</h3>
-                        <p>
-                            La solicitud de Tesis se envio correctamente al administrador.
-                        <p class="text-center" style="margin-top: -15px; margin-bottom: -10px;">
-                            Una vez aceptada, aparecerá en la plataforma para su selección.
-                        </p>
-
-                       </div>
+                <form method="post" class="form-horizontal form-without-legend" action="change_password.php">
+                  <div class="col-md-12 margin-bottom-50">
+                      <h2>Cambiar Contraseña</h2>
+                  </div>
+                    <div class="form-group col-sm-12">
+                        <label for="oldPwd" class="col-lg-4 control-label">Contraseña actual: <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input type="password" class="form-control" id="oldPwd" name="oldPwd" required="required">
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group col-sm-12">
+                        <label for="newPwd" class="col-lg-4 control-label">Nueva contraseña: <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input type="password" class="form-control" id="newPwd" name="newPwd" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="confPwd" class="col-lg-4 control-label">Confirmar nueva contraseña: <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input type="password" class="form-control" id="confPwd" name="confPwd" required="required">
+                        </div>
+                    </div>
+                    <div class="row text-right col-sm-12">
+                        <button type="submit" class="btn btn-primary">Aplicar</button>
+                        <button type="button" class="btn btn-secondary" onclick="location.href='index.php'">Cerrar</button>
+                    </div>
+              </div>
+
+            </div>
+          </div>
+        </form>
                 <!-- END CONTENT -->
-            </div>
             <!-- END SIDEBAR & CONTENT -->
-
-            <div class="row margin-bottom-60">
-                <div class="col-lg-4 col-lg-offset-4 text-center margin-bottom-40" style="margin-top: -50px">
-                    <button onclick="window.location.href='/thesis-selecter'" class="btn btn-primary">¡Entendido!</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
+        <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
-        <?php include('footer.php'); ?>
+        <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->
@@ -172,11 +213,13 @@ if (!isset($_SESSION['researcher']))
 
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
     <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-
+    <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-filestyle/src/bootstrap-filestyle.min.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             Layout.init();
+            Layout.initUniform();
         });
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->

@@ -129,8 +129,11 @@
                 <div class="col-md-12 col-sm-12 ">
                     <h1>Mis Tesis</h1>
                     <div class="row text-right ">
-                      <a href="add-thesis.php" class="btn btn-primary" style="margin-right: 1.5%;" name="button">Agregar tesis</a>
+                      <button type="button" style="margin-right: 1.5%; "class="btn btn-primary" onclick="location.href = 'add-thesis.php'">
+                        <span class="glyphicon glyphicon-open-file"></span> Agregar tesis
+                      </button>
                     </div>
+
                     <div class="content-page">
                         <div class="row">
                         </div>
@@ -185,8 +188,6 @@
         </div>
     </div>
     <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
-    <?php include('assets/pages/modals/Researcher/add-thesis.php') ?>
-
     <!-- BEGIN PRE-FOOTER -->
     <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->

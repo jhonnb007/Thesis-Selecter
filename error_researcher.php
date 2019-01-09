@@ -142,6 +142,7 @@ if (!isset($_SESSION['researcher']))
 
         </div>
     </div>
+    <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
