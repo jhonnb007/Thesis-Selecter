@@ -4,7 +4,14 @@
     include_once 'assets/code/university.php';
     include_once 'assets/code/educative_program.php';
     include_once 'assets/code/school.php';
-
+    $mail = $_GET["mail"];
+    $name = $_GET["name"];
+    $ap = $_GET["ap"];
+    if (empty($_GET["mail"] && $_GET["name"] && $_GET["ap"]))
+    {
+      header("Location: error-permission.php");
+    }
+    $last= explode(" ",$ap);
     session_start();
 
     if (isset($_SESSION['researcher']))
@@ -20,19 +27,7 @@
         $findme   = '@ucol.mx';
         $pos = strpos($mystring, $findme);
 
-        if (empty($_POST['firstname'])) {
-		$_SESSION['empty_names_msg'] = "Ingrese su nombre(s)";
-		header("Location: request.php");
-	} else if (empty($_POST['lastname'])) {
-		$_SESSION['empty_lastname_msg'] = "Ingrese su apellido paterno";
-		header("Location: request.php");
-        } else if (empty($_POST['lastname2'])) {
-                $_SESSION['empty_lastname2_msg'] = "Ingrese su apellido materno";
-                header("Location: request.php");
-        } else if (empty($_POST['email']) || $pos === false) {
-                $_SESSION['empty_email_msg'] = "Ingrese su email";
-                header("Location: request.php");
-        } else if (empty($_POST['educative'])) {
+         if (empty($_POST['educative'])) {
                 $_SESSION['empty_educative_msg'] = "Favor de seleccionar su carrera";
                 header("Location: request.php");
 	} else {
@@ -57,10 +52,10 @@
                         //$faculty->set_id($faculty2);
                         $educative->set_id($educative2);
 
-                        $firstname = $_POST['firstname'];
-                        $lastname = $_POST['lastname'];
-                        $lastname2 = $_POST['lastname2'];
-                        $email = $_POST['email'];
+                        $firstname = $name;
+                        $lastname = $last[0];
+                        $lastname2 = $last[1];
+                        $email = $mail;
 
                         $student->set_full_name($firstname . ' ' . $lastname . ' ' . $lastname2);
                         $student->set_email($email);
@@ -221,25 +216,25 @@
                                     <div class="form-group">
                                         <label for="firstname" class="col-lg-4 control-label">Nombre(s) <span class="require">*</span></label>
                                         <div class="col-lg-8">
-                                            <input type="text" class="form-control" id="firstname" name="firstname" required="required">
+                                            <input disabled="true" type="text" class="form-control" value="<?php echo $name ?>" id="firstname" name="firstname" required="required">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="lastname" class="col-lg-4 control-label">Apellido Paterno <span class="require">*</span></label>
                                         <div class="col-lg-8">
-                                            <input type="text" class="form-control" id="lastname" name="lastname" required="required">
+                                            <input disabled="true" type="text" class="form-control" value="<?php echo $last[0]; ?>"id="lastname" name="lastname" required="required">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="lastname2" class="col-lg-4 control-label">Apellido Materno <span class="require">*</span></label>
                                         <div class="col-lg-8">
-                                            <input type="text" class="form-control" id="lastname2" name="lastname2" required="required">
+                                            <input disabled="true" type="text" class="form-control" value="<?php echo $last[1]; ?>" id="lastname2" name="lastname2" required="required">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="col-lg-4 control-label">Correo electrónico <span class="require">*</span></label>
                                         <div class="col-lg-8">
-                                            <input type="email" class="form-control" id="email" name="email" pattern=".+@ucol.mx" required="required">
+                                            <input disabled="true" type="email" class="form-control" value="<?php echo $mail; ?>"id="email" name="email" pattern=".+@ucol.mx" required="required">
                                         </div>
                                     </div>
                                 </fieldset>

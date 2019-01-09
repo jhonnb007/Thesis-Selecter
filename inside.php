@@ -260,7 +260,7 @@
                 {?>
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-4 text-center padding-top-20 margin-bottom-40">
-                        <button type="submit" onclick="window.location.href='request.php'" class="btn btn-primary">Solicitar tesis</button>
+                        <button type="submit" onclick="window.location.href='federated_info.php'" class="btn btn-primary">Solicitar tesis</button>
                         <button onclick="window.location.href='summary.php'" class="btn btn-primary">Ver resumen</button>
                         <button type="button" onclick="window.location.href='/thesis-selecter'" class="btn btn-default">Regresar</button>
                     </div>
