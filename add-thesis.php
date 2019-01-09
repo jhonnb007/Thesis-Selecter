@@ -1,16 +1,17 @@
 <?php
-    include_once 'assets/code/include/db_connection.php';
-    include_once 'assets/code/include/db_functions.php';
-    session_start();
-    if (!isset($_SESSION['researcher']))
-    {
-        header("Location: error-permission.php");
-    }
-    if (isset($_FILES['addThesisPicture']))
+  include_once 'assets/code/include/db_connection.php';
+  include_once 'assets/code/include/db_functions.php';
+  session_start();
+  if (!isset($_SESSION['researcher']))
+  {
+      header("Location: error-permission.php");
+  }
+  if (isset($_FILES['addThesisPicture'], $_POST['addThesisName'], $_POST['addThesisTopic'], $_POST['addThesisPlaza'], $_POST['addThesisProfile'], $_POST['addThesisAgency'], $_POST['addThesisTecnology'], $_POST['addThesisSupport'], $_POST['addThesisSummary']))
+  {
+    if (!empty($_FILES['addThesisPicture'] && $_POST['addThesisName'] && $_POST['addThesisTopic'] && $_POST['addThesisPlaza'] && $_POST['addThesisProfile'] && $_POST['addThesisAgency'] && $_POST['addThesisTecnology'] && $_POST['addThesisSupport'] && $_POST['addThesisSummary']))
     {
       global $connection;
       $action = $_SESSION['researcher']->get_email();
-      echo $action;
       $sql = "SELECT ResearcherID, ResearchLineID, ResearchGroupID FROM researcher where EmailAddress = '$action'";
       $result = $connection->query($sql);
       if ($result->num_rows > 0) {
@@ -34,25 +35,23 @@
       move_uploaded_file($ruta,$picture);
       $sql = "INSERT INTO `thesis` (`ThesisID`, `ThesisName`, `LevelID`, `PlazasID`, `ResearcherID`, `StatusID`, `TopicID`, `EducativeProgramID`, `FundingAgencyID`, `FundingAgencyAllID`, `ResearchGroupID`, `ResearchLineID`, `SupportID`, `ProjectID`, `RequirementsID`, `SscID`, `Assigned`, `Summary`, `Category`, `Image`, `ImageIn`) VALUES (NULL, '$name', '2', '$plazas', '$researcher', '1', '$topic', '$profile', '2', '$agency', '$group', '$line', '$support', NULL, '$tecnology', NULL, '0', '$summary', '2', '$picture', '$picture')";
       if ($connection->query($sql) === TRUE) {
-        echo "<SCRIPT>
-               alert('Aviso!, Solicitud enviada para aprobación');
-             </SCRIPT>";
-        header("location: my-theses.php");
+         header("location: success_researcher.php");
          } else {
-           echo "<SCRIPT>
-                  alert('Aviso!, error al ingresar datos');
-                </SCRIPT>";
-           header("location: my-theses.php");
+           header("location: error_researcher.php");
+
         }
        $connection->close();
-    }
+    }else {
+      header("location: error_researcher.php");
 
+    }
+  }
 ?>
 <!DOCTYPE html>
 <!--
 --
--- Developed by: Ing. Jorge Luis Aguirre Martínez & Ing. Alan Ulises Montes Rodríguez
--- © October 15, 2017 Derechos Reservados, Universidad de Colima.
+-- Developed by: Ing. Jose Angel Torres Martinez
+-- © December 20, 2018 Derechos Reservados, Universidad de Colima.
 --
 -->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -219,7 +218,7 @@
                     <div class="form-group col-sm-12">
                       <label for="addPicture" class="col-lg-4 control-label">Imagen: <span class="require">*</span></label>
                       <div class="col-lg-8 div-input">
-                         <input id="addThesisPicture" name="addThesisPicture" required="required" type="file" class="filestyle" data-text="Explorar">                      </div>
+                         <input id="addThesisPicture" name="addThesisPicture" required="required" type="file" class="filestyle" data-text="Explorar" accept="image/*">                      </div>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="addThesisSummary" class="col-lg-4 control-label">Resumen: <span class="require">*</span></label>

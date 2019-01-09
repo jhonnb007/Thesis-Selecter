@@ -44,6 +44,12 @@
                     <td><h5><a href="javascript:;">linea de investigacion:</a></h5></td>
                     <td id="lineID"><?php echo $_SESSION['researcher']->get_research_line(); ?></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td class="text-center"><button type="button" id="edit" class="btn btn-primary" onclick="location.href = 'change_password.php'">
+                      <span class="glyphicon glyphicon-pencil"></span> Contraseña
+                    </button></td>
+                </tr>
             </tbody>
         </table>
       </div>
