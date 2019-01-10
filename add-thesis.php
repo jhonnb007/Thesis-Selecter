@@ -77,6 +77,7 @@
     <!-- Page level plugin styles START -->
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-multiselect/bootstrap-multiselect.css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
@@ -109,12 +110,12 @@
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+            <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
-                    <li><a href="/thesis-selecter">Tesis</a></li>
+                    <li><a href="/Thesis-Selecter">Tesis</a></li>
                     <li class="active"><a href="my-theses.php">Mis Tesis</a></li>
                     <li><a href="requests.php">Solicitudes</a></li>
                     <li class="dropdown">
@@ -173,22 +174,18 @@
                             <input type="text" class="form-control" id="addThesisName" name="addThesisName" required="required">
                         </div>
                     </div>
-                    <div class="form-group col-sm-12">
+                    <div id="topicDiv" class="form-group col-sm-12">
                         <label for="addThesisTopic" class="col-lg-4 control-label">Tema Central: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <select class="form-control" id="addThesisTopic" name="addThesisTopic" required="required"></select>
+                          <select style="width:100px;height:200px;" multiple="multiple" class="form-control" id="addThesisTopic" name="addThesisTopic" required="required"></select>
+                          <font>Si no encontró tema, agregue uno nuevo  <a href="" data-toggle="modal" data-target="#newTopic">aqui</a> </font>
                         </div>
                     </div>
 
                     <div class="form-group col-sm-12">
                         <label for="addThesisPlaza" class="col-lg-4 control-label">Alumnos requeridos: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <select class="form-control" id="addThesisPlaza" name="addThesisPlaza" required="required">
-                              <option></option>
-                              <option value="1">Uno</option>
-                              <option value="2">Dos</option>
-                              <option value="3">Tres</option>
-                          </select>
+                          <select class="form-control" id="addThesisPlaza" name="addThesisPlaza" required="required"></select>
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
@@ -200,13 +197,13 @@
                     <div class="form-group col-sm-12">
                         <label for="addThesisProfile" class="col-lg-4 control-label">Tecnologías: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                            <select class="form-control" id="addThesisTecnology" name="addThesisTecnology" required="required"></select>
+                            <select multiple="multiple" class="form-control" id="addThesisTecnology" name="addThesisTecnology" required="required"></select>
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="addThesisSupport" class="col-lg-4 control-label">Tipo de apoyo: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                            <select class="form-control" id="addThesisSupport" name="addThesisSupport" required="required"></select>
+                            <select multiple="multiple" class="form-control" id="addThesisSupport" name="addThesisSupport" required="required"></select>
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
@@ -228,7 +225,7 @@
                     </div>
                     <div class="row text-right col-sm-12">
                         <button type="submit" class="btn btn-primary">Aplicar</button>
-                        <button type="button" class="btn btn-secondary" onclick="location.href='index.php'">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" onclick="info();">Cerrar</button>
                     </div>
 
               </div>
@@ -239,6 +236,8 @@
                 <!-- END CONTENT -->
             <!-- END SIDEBAR & CONTENT -->
         <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+        <?php include('assets/pages/modals/Researcher/add-topic.php') ?>
+
 
 
     <!-- BEGIN PRE-FOOTER -->
@@ -261,6 +260,7 @@
     <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
     <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
     <script src="assets/plugins/bootstrap-filestyle/src/bootstrap-filestyle.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-multiselect/bootstrap-multiselect.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {

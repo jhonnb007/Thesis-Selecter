@@ -14,16 +14,16 @@
 <!-- Head BEGIN -->
 <head>
     <?php include('metadata.php'); ?>
-    <link href='assets/corporate/img/logos/logo-favicon.png' rel='shortcut icon' type='image/png'> 
+    <link href='assets/corporate/img/logos/logo-favicon.png' rel='shortcut icon' type='image/png'>
 
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
-    <!-- Global styles START -->          
+    <!-- Global styles START -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Global styles END --> 
+    <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
@@ -39,10 +39,10 @@
     <!-- Theme styles END -->
 </head>
 <!-- Head END -->
-    
+
 <!-- Body BEGIN -->
 <body class="corporate">
-    
+
     <!-- BEGIN TOP BAR -->
     <div class="pre-header" style="background-color: #3B829A;">
         <div class="container">
@@ -53,21 +53,21 @@
                 </div>
                 <!-- END TOP BAR LEFT PART -->
             </div>
-        </div>        
+        </div>
     </div>
     <!-- END TOP BAR -->
-    
+
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+            <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
 
-                    <li><a href="/thesis-selecter">Tesis</a></li>
+                    <li><a href="/Thesis-Selecter">Tesis</a></li>
                     <li><a href="login.php">Asesores</a></li>
                     <li><a href="about.php">Sobre Nosotros</a></li>
 
@@ -84,7 +84,7 @@
                                     </span>
                                 </div>
                             </form>
-                        </div> 
+                        </div>
                     </li>
                     <!-- END TOP SEARCH -->
                 </ul>
@@ -106,7 +106,7 @@
                         <img alt="" style="margin-top: -45px; margin-left: auto; margin-right: auto; height: 20%; width: 20%;" src="assets/pages/img/works/success.png" >
 
                         <h2 style="color: #44b1c1">
-                            <strong>¡Solicitud enviada correctamente!</strong> 
+                            <strong>¡Solicitud enviada correctamente!</strong>
                         </h2>
 
                        <div class="details">
@@ -125,8 +125,8 @@
             <!-- END SIDEBAR & CONTENT -->
 
             <div class="row margin-bottom-60">
-                <div class="col-lg-4 col-lg-offset-4 text-center margin-bottom-40" style="margin-top: -50px">                        
-                    <button onclick="window.location.href='/thesis-selecter'" class="btn btn-primary">¡Entendido!</button>
+                <div class="col-lg-4 col-lg-offset-4 text-center margin-bottom-40" style="margin-top: -50px">
+                    <button onclick="window.location.href='/Thesis-Selecter'" class="btn btn-primary">¡Entendido!</button>
                 </div>
             </div>
 
@@ -141,10 +141,10 @@
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
     <script src="assets/plugins/respond.min.js"></script>
-    <![endif]--> 
+    <![endif]-->
     <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
 

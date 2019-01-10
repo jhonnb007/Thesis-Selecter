@@ -14,16 +14,16 @@
 <!-- Head BEGIN -->
 <head>
     <?php include('metadata.php'); ?>
-    <link href='assets/corporate/img/logos/logo-favicon.png' rel='shortcut icon' type='image/png'> 
+    <link href='assets/corporate/img/logos/logo-favicon.png' rel='shortcut icon' type='image/png'>
 
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
-    <!-- Global styles START -->          
+    <!-- Global styles START -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Global styles END --> 
+    <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
@@ -42,7 +42,7 @@
 
 <!-- Body BEGIN -->
 <body class="corporate">
-    
+
     <!-- BEGIN TOP BAR -->
     <div class="pre-header" style="background-color: #3B829A;">
         <div class="container">
@@ -53,14 +53,14 @@
                 </div>
                 <!-- END TOP BAR LEFT PART -->
             </div>
-        </div>        
+        </div>
     </div>
     <!-- END TOP BAR -->
-    
+
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-          <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+          <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
           <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
             <!-- BEGIN NAVIGATION -->
@@ -79,7 +79,7 @@
                                     </span>
                                 </div>
                             </form>
-                        </div> 
+                        </div>
                     </li>
                     <!-- END TOP SEARCH -->
                 </ul>
@@ -92,7 +92,7 @@
     <div class="main">
         <div class="container">
             <ul class="breadcrumb margin-bottom-5">
-                <li><a href="/thesis-selecter">Inicio</a></li>
+                <li><a href="/Thesis-Selecter">Inicio</a></li>
                 <li><a href="javascript:;">Permisos</a></li>
                 <li class="active">Error</li>
             </ul>
@@ -108,7 +108,7 @@
                             <h3>Oops!  Estás perdido.</h3>
                             <p>
                                 Es probable que no tengas los permisos <br> necesarios para estar en esta sección.
-                                <a href="/thesis-selecter" class="link">Regresa al inicio.</a>
+                                <a href="/Thesis-Selecter" class="link">Regresa al inicio.</a>
                             </p>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
             <!-- END SIDEBAR & CONTENT -->
         </div>
     </div>
-    
+
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->
@@ -127,10 +127,10 @@
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
     <script src="assets/plugins/respond.min.js"></script>
-    <![endif]--> 
+    <![endif]-->
     <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
 
@@ -140,7 +140,7 @@
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
-            Layout.init();    
+            Layout.init();
         });
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
