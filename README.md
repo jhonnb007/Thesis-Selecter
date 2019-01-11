@@ -13,4 +13,4 @@ After finish working
 5. git push origin (the new branch name to commit)
 
 After Merge Request
-6. git pull equipo selecter <-- selecter is the branch we will be working on
+1. git pull equipo selecter <-- selecter is the branch we will be working on
