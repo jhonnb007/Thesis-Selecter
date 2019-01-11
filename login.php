@@ -24,7 +24,7 @@
 
                     if ($researcher != false) {
                             $_SESSION['researcher'] = $researcher;
-                            header("Location: /thesis-selecter");
+                            header("Location: /Thesis-Selecter");
                     } else {
                             $_SESSION['error'] = "Correo electrónico o contraseña incorrectos";
                             header("Location: error-login.php");
@@ -117,12 +117,12 @@
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Tesis Ontology"></a>
+            <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Tesis Ontology"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
-                    <li><a href="/thesis-selecter">Tesis</a></li>
+                    <li><a href="/Thesis-Selecter">Tesis</a></li>
                     <li class="active"><a href="login.php">Asesores</a></li>
                     <li><a href="about.php">Sobre Nosotros</a></li>
                     <!-- BEGIN TOP SEARCH -->
@@ -151,7 +151,7 @@
     <div class="main">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/thesis-selecter">Inicio</a></li>
+                <li><a href="/Thesis-Selecter">Inicio</a></li>
                 <li class="active">Iniciar sesión</li>
             </ul>
             <!-- BEGIN SIDEBAR & CONTENT -->

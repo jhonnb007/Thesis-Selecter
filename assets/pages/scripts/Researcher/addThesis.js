@@ -1,22 +1,38 @@
 function getSupport()
 {
   $.getJSON("administrator/details.php", function (result) {
-    var arrayConcat="<option></option>";
+    var arrayConcat="";
     for (var i = 0; i < result.length; i++) {
         arrayConcat = arrayConcat.concat("<option value="+result[i].SupportID+"> "+result[i].SupportName+"</option>")
       }
         $("#addThesisSupport").html(arrayConcat);
+        $(function() {
+
+          $('#addThesisSupport').multiselect({
+
+              includeSelectAllOption: true
+          });
+
+      });
  });
 }
 
 function getTopic()
 {
   $.getJSON("administrator/topic.php", function (result) {
-    var arrayConcat="<option></option>";
+    var arrayConcat="";
     for (var i = 0; i < result.length; i++) {
-        arrayConcat = arrayConcat.concat("<option value="+result[i].TopicID+"> "+result[i].TopicName+"</option>")
+        arrayConcat = arrayConcat.concat("<option value="+result[i].TopicID+">"+result[i].TopicName+"</option>")
       }
         $("#addThesisTopic").html(arrayConcat);
+        $(function() {
+
+          $('#addThesisTopic').multiselect({
+
+              includeSelectAllOption: true
+          });
+
+      });
  });
 }
 
@@ -44,11 +60,19 @@ function getFundingAgency()
 function getTecnology()
 {
   $.getJSON("administrator/requirements.php", function (result) {
-    var arrayConcat="<option></option>";
+    var arrayConcat="";
     for (var i = 0; i < result.length; i++) {
         arrayConcat = arrayConcat.concat("<option value="+result[i].RequirementsID+"> "+result[i].RequirementsName+"</option>")
       }
         $("#addThesisTecnology").html(arrayConcat);
+        $(function() {
+
+          $('#addThesisTecnology').multiselect({
+
+              includeSelectAllOption: true
+          });
+
+      });
  });
 }
 function getResearcher()
@@ -89,12 +113,43 @@ function postAddThesis(id, lineID, groupID)
     });
   });
 }
+function showTopic()
+{
+   $('#topicDiv').ready(function() {
+      getTopic();
+    });
+
+}
+function newTopic()
+{
+     $("#frm_topic").on("submit", function (e)
+     {
+       e.preventDefault();
+       var name = $("#input-newTopic").val();
+       $.post("administrator/add.php",
+         {
+          newTopic: name,
+         },
+          function(){
+            $("#topicDiv").load(' #topicDiv');
+            showTopic();
+            $('#newTopic').modal('hide');
+         });
+     });
+}
+// function info()
+// {
+//   var x = $('#addThesisTopic').val();
+//   alert(x);
+// }
 $(document).ready(function()
 {
   getResearcher();
+  showTopic();
   getFundingAgency();
   getTecnology();
   getProfile();
-  getTopic();
   getSupport();
+  newTopic();
+
 });
