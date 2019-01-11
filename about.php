@@ -1,6 +1,6 @@
 <?php
-    session_start();    
-    
+    session_start();
+
     if (isset($_SESSION['researcher']))
     {
         header("Location: error-permission.php");
@@ -22,16 +22,16 @@
 <!-- Head BEGIN -->
 <head>
     <?php include('metadata.php'); ?>
-    <link href='assets/corporate/img/logos/logo-favicon.png' rel='shortcut icon' type='image/png'> 
+    <link href='assets/corporate/img/logos/logo-favicon.png' rel='shortcut icon' type='image/png'>
 
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
-    <!-- Global styles START -->          
+    <!-- Global styles START -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Global styles END --> 
+    <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
@@ -49,7 +49,7 @@
 
 <!-- Body BEGIN -->
 <body class="corporate">
-    
+
     <!-- BEGIN TOP BAR -->
     <div class="pre-header" style="background-color: #3B829A;">
         <div class="container">
@@ -60,20 +60,20 @@
                 </div>
                 <!-- END TOP BAR LEFT PART -->
             </div>
-        </div>        
+        </div>
     </div>
     <!-- END TOP BAR -->
-    
+
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+            <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
-                    <li><a href="/thesis-selecter">Tesis</a></li>
+                    <li><a href="/Thesis-Selecter">Tesis</a></li>
                     <li><a href="login.php">Asesores</a></li>
                     <li class="active"><a href="about.php">Sobre Nosotros</a></li>
 
@@ -90,9 +90,9 @@
                                     </span>
                                 </div>
                             </form>
-                        </div> 
+                        </div>
                     </li>
-                    <!-- END TOP SEARCH -->                 
+                    <!-- END TOP SEARCH -->
                 </ul>
             </div>
             <!-- END NAVIGATION -->
@@ -103,7 +103,7 @@
     <div class="main">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/thesis-selecter">Inicio</a></li>
+                <li><a href="/Thesis-Selecter">Inicio</a></li>
                 <li class="active">Sobre Nosotros</li>
             </ul>
             <!-- BEGIN SIDEBAR & CONTENT -->
@@ -113,11 +113,11 @@
                     <h1>Sobre Nosotros</h1>
                     <div class="content-page">
                         <div class="row margin-bottom-30">
-                            <!-- BEGIN INFO BLOCK -->               
+                            <!-- BEGIN INFO BLOCK -->
                             <div class="col-md-7">
                                 <p align="justify">El objetivo de esta plataforma es facilitar la elección de tesis de grado, de manera dinámica, a través de una interfaz amigable y basada en los intereses académicos del estudiante.</p>
                                 <h2 class="no-top-space">Introducción</h2>
-                                <p align="justify">Ante la dificultad de los estudiantes al elegir un tema de tesis de grado, se desarrolló una plataforma web para guiarlo en dicho propósito. De una manera organizada, sintetizada, sencilla y clara, al usuario (estudiante) se le presenta información relacionada con sus posibles intereses académicos (título de la tesis, tema central y línea de investigación asociados, datos del asesor, perfil del tesista, beneficios recibidos). A través de la selección de dichos intereses, se le mostrarán los temas de las tesis disponibles de realizar, acorde a las características de su elección, así como un resumen de las mismas, coadyuvando a la toma de decisión de su tema de tesis.</p> 
+                                <p align="justify">Ante la dificultad de los estudiantes al elegir un tema de tesis de grado, se desarrolló una plataforma web para guiarlo en dicho propósito. De una manera organizada, sintetizada, sencilla y clara, al usuario (estudiante) se le presenta información relacionada con sus posibles intereses académicos (título de la tesis, tema central y línea de investigación asociados, datos del asesor, perfil del tesista, beneficios recibidos). A través de la selección de dichos intereses, se le mostrarán los temas de las tesis disponibles de realizar, acorde a las características de su elección, así como un resumen de las mismas, coadyuvando a la toma de decisión de su tema de tesis.</p>
                                 <h2 class="no-top-space">Conclusiones</h2>
                                 <p align="justify">Los estudiantes serán beneficiados al conocer lo básico y necesario acerca de un tema de tesis de grado,  pudiendo elegir su tema, de manera acertada, rápida y sencilla, acorde a sus intereses académicos. Adicionalmente, y dado que es una plataforma web, el estudiante podrá acceder a esta herramienta en cualquier momento y desde cualquier lugar. Todo ello permite que, al usar esta plataforma, el estudiante elija con facilidad y certeza, su tema de tesis.
                                 </p>
@@ -140,8 +140,8 @@
                                 </div>
                                 <!-- END LISTS -->
                             </div>
-                            <!-- END INFO BLOCK --> 
-                            
+                            <!-- END INFO BLOCK -->
+
                             <!-- BEGIN PROGRESS BAR -->
                             <div class="col-md-5 front-skills margin-top--20">
                                 <h2 class="block">Nuestras Habilidades</h2>
@@ -161,7 +161,7 @@
                                 <div class="progress">
                                     <div role="progressbar" class="progress-bar" style="width: 100%;"></div>
                                 </div>
-                            </div>                       
+                            </div>
                             <!-- END PROGRESS BAR -->
                         </div>
 
@@ -171,7 +171,7 @@
                                     <div class="thumbnail">
                                         <img alt="" src="assets/pages/img/people/avatar-large.png">
                                         <h3>
-                                            <strong>Jorge Luis Aguirre</strong> 
+                                            <strong>Jorge Luis Aguirre</strong>
                                             <small>Desarrollador Web / FRONT & BACK-END</small>
                                         </h3>
                                         <p>Software Engineering at Emergys Mexico, IBM Integration Bus Internship ...</p>
@@ -187,7 +187,7 @@
                                     <div class="thumbnail">
                                         <img alt="" src="assets/pages/img/people/avatar-large.png">
                                         <h3>
-                                            <strong>Alan Ulises Montes</strong> 
+                                            <strong>Alan Ulises Montes</strong>
                                             <small>Desarrollador Web / BACK-END</small>
                                         </h3>
                                         <p>Software Engineering at Emergys Mexico, Java Developer Internship...</p>
@@ -203,7 +203,7 @@
                                     <div class="thumbnail">
                                         <img alt="" src="assets/pages/img/people/avatar-large.png">
                                         <h3>
-                                            <strong>María Eugenia Cabello</strong> 
+                                            <strong>María Eugenia Cabello</strong>
                                             <small>D. en C / ASESORA</small>
                                         </h3>
                                         <p>Profesora de tiempo completo en la Facultad de Telemática...</p>
@@ -219,7 +219,7 @@
                                     <div class="thumbnail">
                                         <img alt="" src="assets/pages/img/people/avatar-large.png">
                                         <h3>
-                                            <strong>José Roman Herrera</strong> 
+                                            <strong>José Roman Herrera</strong>
                                             <small>D. en C / COASESOR</small>
                                         </h3>
                                         <p>Profesor de tiempo completo en la Facultad de Telemática...</p>
@@ -231,7 +231,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                            </ul>            
+                            </ul>
                         </div>-->
                     </div>
                 </div>
@@ -249,10 +249,10 @@
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
     <script src="assets/plugins/respond.min.js"></script>
-    <![endif]--> 
+    <![endif]-->
     <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
 
@@ -262,7 +262,7 @@
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
-            Layout.init();    
+            Layout.init();
         });
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->

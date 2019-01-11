@@ -6,6 +6,7 @@
     session_start();
 
 
+
     $_SESSION['theses'] = get_theses();
     //$all_topic = $conn->query("SELECT distinct TopicID FROM `thesis` WHERE Category = '1' GROUP BY TopicID");
     $all_topic = $connection->query("SELECT distinct TC.TopicID, TC.TopicName FROM `thesis` AS T INNER JOIN `topic` AS TC ON T.TopicID = TC.TopicID WHERE Category = '1' GROUP BY TC.TopicName");
@@ -68,6 +69,7 @@
 
 <!-- Head BEGIN -->
 <head>
+    <meta http-equiv="expires" content="0" >
     <?php include('metadata.php'); ?>
     <link href='assets/corporate/img/logos/logo-favicon.png' rel='shortcut icon' type='image/png'>
 
@@ -96,7 +98,7 @@
 <!-- Head END -->
 
 <!-- Body BEGIN -->
-<body class="corporate">
+<body class="corporate" ons>
 
     <!-- BEGIN TOP BAR -->
     <div class="pre-header" style="background-color: #3B829A;">
@@ -116,7 +118,7 @@
     <div class="header">
       <div class="container">
 
-        <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+        <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -127,7 +129,7 @@
                 if (isset($_SESSION['researcher']))
                 {?>
                     <ul>
-                        <li class="active"><a href="/thesis-selecter">Tesis</a></li>
+                        <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
                         <li><a href="my-theses.php">Mis Tesis</a></li>
                         <li><a href="requests.php">Solicitudes</a></li>
                         <li class="dropdown">
@@ -168,7 +170,7 @@
                 else
                 {?>
                     <ul>
-                        <li class="active"><a href="/thesis-selecter">Tesis</a></li>
+                        <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
                         <li><a href="login.php">Asesores</a></li>
                         <li><a href="about.php">Sobre Nosotros</a></li>
                         <!-- BEGIN TOP SEARCH -->
@@ -200,7 +202,7 @@
     <div class="main">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/thesis-selecter">Inicio</a></li>
+                <li><a href="/Thesis-Selecter">Inicio</a></li>
                 <li class="active">Tesis</li>
             </ul>
 
@@ -535,7 +537,6 @@
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
     <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
     <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
@@ -549,55 +550,55 @@
 
     <!-- BEGIN SCRIPTS FILTERS -->
     <script type="text/javascript">
-        $(document).ready(function() {
-            var total_record = 0;
-            var topic = check_box_values('TopicID');
-            var group = check_box_values('ResearchGroupID');
-            var line =  check_box_values('ResearchLineID');
-            var program = check_box_values('EducativeProgramID');
-            var researcher = check_box_values('ResearcherID');
-            var total_groups = <?php echo $total_data; ?>;
-            $('#results').load("autoload.php?group_no="+total_record+"&TopicID="+topic+"&ResearchGroupID="+group+"&ResearchLineID="+line+"&EducativeProgramID="+program+"&ResearcherID="+researcher,  function() {
-                total_record++;
-            });
-            $(window).scroll(function() {
-                //alert($(window).height());
-                //alert($(document).height());
-                //alert($(window).scrollTop());
-                //if ($(window).scrollTop() + $(window).height() > $(document).height() - 600)
-                if($(window).scrollTop() + $(window).height() === $(document).height())
-                {
-                    if(total_record <= total_groups)
-                    {
-                        loading = true;
-//                        $('.loader').show();
-          //              $(".loader").html("<img src='assets/pages/img/works/loader.gif' style='margin-top: 50px; margin-bottom: 50px;'/>");
-                        $.get("autoload.php?group_no="+total_record+"&TopicID="+topic+"&ResearchGroupID="+group+"&ResearchLineID="+line+"&EducativeProgramID="+program+"&ResearcherID="+researcher,
-                        function(data){
-                        if (data != "") {
-                            $("#results").append(data);
-//                            $('.loader').hide();
-                            $('.loader').empty();
-                            total_record++;
-                        }
-                        });
-                    }
-                        // total_record ++;
-                        //alert('termino de cargar');
-                }
-            });
-            function check_box_values(check_box_class){
-                var values = new Array();
-                    $("."+check_box_class+":checked").each(function() {
-                       values.push($(this).val());
-                    });
-                return values;
-            }
-            $('.sort_rang').change(function(){
-                $("#search_form").submit();
-                return false;
-            });
+    $(document).ready(function() {
+        var total_record = 0;
+        var topic = check_box_values('TopicID');
+        var group = check_box_values('ResearchGroupID');
+        var line =  check_box_values('ResearchLineID');
+        var program = check_box_values('EducativeProgramID');
+        var researcher = check_box_values('ResearcherID');
+        var total_groups = <?php echo $total_data; ?>;
+        $('#results').load("autoload.php?group_no="+total_record+"&TopicID="+topic+"&ResearchGroupID="+group+"&ResearchLineID="+line+"&EducativeProgramID="+program+"&ResearcherID="+researcher,  function() {
+            total_record++;
         });
+        $(window).scroll(function() {
+            //alert($(window).height());
+            //alert($(document).height());
+            //alert($(window).scrollTop());
+            //if ($(window).scrollTop() + $(window).height() > $(document).height() - 600)
+            if($(window).scrollTop() + $(window).height() === $(document).height())
+            {
+                if(total_record <= total_groups)
+                {
+                    loading = true;
+//                        $('.loader').show();
+      //              $(".loader").html("<img src='assets/pages/img/works/loader.gif' style='margin-top: 50px; margin-bottom: 50px;'/>");
+                    $.get("autoload.php?group_no="+total_record+"&TopicID="+topic+"&ResearchGroupID="+group+"&ResearchLineID="+line+"&EducativeProgramID="+program+"&ResearcherID="+researcher,
+                    function(data){
+                    if (data != "") {
+                        $("#results").append(data);
+//                            $('.loader').hide();
+                        $('.loader').empty();
+                        total_record++;
+                    }
+                    });
+                }
+                    // total_record ++;
+                    //alert('termino de cargar');
+            }
+        });
+        function check_box_values(check_box_class){
+            var values = new Array();
+                $("."+check_box_class+":checked").each(function() {
+                   values.push($(this).val());
+                });
+            return values;
+        }
+        $('.sort_rang').change(function(){
+            $("#search_form").submit();
+            return false;
+        });
+    });
     </script>
     <!-- END SCRIPTS FILTERS -->
 

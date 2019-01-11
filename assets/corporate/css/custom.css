@@ -1,1 +1,8 @@
-/* here you can put your own css to customize and override the theme */
+.multiselect-container>li>a>label {
+  padding: 4px 20px 3px 25px;
+
+}
+.multiselect-container{
+   overflow-y: scroll;
+   height: 250px;
+}

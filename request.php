@@ -132,13 +132,13 @@
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+            <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
-                    <li class="active"><a href="/thesis-selecter">Tesis</a></li>
+                    <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
                     <li><a href="login.php">Asesores</a></li>
                     <li><a href="about.php">Sobre Nosotros</a></li>
 
@@ -169,8 +169,8 @@
         <div class="container">
 
         <ul class="breadcrumb">
-            <li><a href="/thesis-selecter">Inicio</a></li>
-            <li><a href="/thesis-selecter">Tesis</a></li>
+            <li><a href="/Thesis-Selecter">Inicio</a></li>
+            <li><a href="/Thesis-Selecter">Tesis</a></li>
             <li><a href="inside.php?thesis_id=<?php echo $_SESSION['thesis']->get_id();?>">Detalle</a></li>
             <li class="active">Solicitud</li>
         </ul>
@@ -278,7 +278,7 @@
                                     <div class="row">
                                         <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
                                             <button type="submit" name="btnRequest" class="btn btn-primary">Enviar Solicitud</button>
-                                            <button type="button" onclick="window.location.href='/thesis-selecter'" class="btn btn-default">Cancelar</button>
+                                            <button type="button" onclick="window.location.href='/Thesis-Selecter'" class="btn btn-default">Cancelar</button>
                                         </div>
                                     </div>
                                     <?php
@@ -288,7 +288,7 @@
                                     <div class="row">
                                         <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
                                             <button title="Número de alumnos requeridos completado." class="btn btn-danger" disabled="true">Tesis no disponible</button>
-                                            <button type="button" onclick="window.location.href='/thesis-selecter'" class="btn btn-default">Cancelar</button>
+                                            <button type="button" onclick="window.location.href='/Thesis-Selecter'" class="btn btn-default">Cancelar</button>
                                         </div>
                                     </div>
                                     <?php
@@ -322,7 +322,7 @@
 
         </div>
     </div>
-        <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
+        <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
     <!-- END FOOTER -->
