@@ -332,7 +332,7 @@
     <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
-        <?php include('footer.php'); ?>
+        <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->

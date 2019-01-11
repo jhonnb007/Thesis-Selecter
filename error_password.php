@@ -1,23 +1,17 @@
 <?php
-    include_once 'assets/code/include/db_functions.php';
-    include_once 'assets/code/researcher.php';
-    include_once 'assets/code/thesis.php';
-
-    session_start();
-
-    if (!isset($_SESSION['researcher']))
-    {
-        header("Location: error-permission.php");
-    }
-
-    $theses = $_SESSION['researcher']->get_all_theses();
-    $rowcount = count($theses);
+include_once 'assets/code/include/db_connection.php';
+include_once 'assets/code/include/db_functions.php';
+session_start();
+if (!isset($_SESSION['researcher']))
+{
+    header("Location: error-permission.php");
+}
 ?>
 <!DOCTYPE html>
 <!--
 --
 -- Developed by: Ing. Jorge Luis Aguirre Martínez & Ing. Alan Ulises Montes Rodríguez
--- © October 15, 2017 Derechos Reservados, Universidad de Colima.
+-- © November 2, 2017 Derechos Reservados, Universidad de Colima.
 --
 -->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -47,6 +41,7 @@
     <!-- Theme styles START -->
     <link href="assets/pages/css/components.css" rel="stylesheet">
     <link href="assets/corporate/css/style.css" rel="stylesheet">
+    <link href="assets/pages/css/gallery.css" rel="stylesheet">
     <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
     <link href="assets/corporate/css/themes/turquoise.css" rel="stylesheet" id="style-color">
     <link href="assets/corporate/css/custom.css" rel="stylesheet">
@@ -72,6 +67,7 @@
     <!-- END TOP BAR -->
 
     <!-- BEGIN HEADER -->
+    <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
             <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
@@ -80,9 +76,9 @@
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
                     <li><a href="/thesis-selecter">Tesis</a></li>
-                    <li class="active"><a href="my-theses.php">Mis Tesis</a></li>
+                    <li><a href="my-theses.php">Mis Tesis</a></li>
                     <li><a href="requests.php">Solicitudes</a></li>
-                    <li class="dropdown">
+                    <li class="active dropdown">
                         <profile>
                             <div class="testimonials-v1 dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                                 <div class="carousel-info">
@@ -91,7 +87,7 @@
                             </div>
                         </profile>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#profileTeacher"><?php echo $_SESSION['researcher']->get_full_name(); ?></a></li>
+                          <li><a href="javascript:void(0);" data-toggle="modal" data-target="#profileTeacher" ><?php echo $_SESSION['researcher']->get_full_name(); ?></a></li>
                             <li><a href="assets/code/session.php?logout=true">Cerrar Sesión</a></li>
                         </ul>
                     </li>
@@ -118,78 +114,37 @@
     </div>
     <!-- Header END -->
 
+
     <div class="main">
         <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="/thesis-selecter">Inicio</a></li>
-                <li class="active">Mis Tesis</li>
-            </ul>
-            <div class="row margin-bottom-124">
-                <!-- BEGIN CONTENT -->
-                <div class="col-md-12 col-sm-12 ">
-                    <h1>Mis Tesis</h1>
-                    <div class="row text-right ">
-                      <button type="button" style="margin-right: 1.5%; "class="btn btn-primary" onclick="location.href = 'add-thesis.php'">
-                        <span class="glyphicon glyphicon-open-file"></span> Agregar tesis
-                      </button>
-                    </div>
 
-                    <div class="content-page">
-                        <div class="row">
+            <!-- BEGIN SIDEBAR & CONTENT -->
+            <div class="row margin-bottom-50">
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-12 col-sm-12">
+                    <div class="content-page page-404">
+                        <div class="number">
+                            404
+                        </div>
+                        <div class="details">
+                            <h3>Oops!  Algo salió mal.</h3>
+                            <p>
+                                ¡Error al cambiar contraseña!<br>
+                                Por favor vuelve a intentarlo.
+                                <a href="/thesis-selecter" class="link">Regresa al inicio.</a>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <!-- END CONTENT -->
             </div>
-            <!-- CONTENT -->
-            <div class="content">
-                <div class="container-fluid">
-                    <form action="tabs.php" role="form" method="post" id="search_form">
-                        <div class="row">
-                            <section class="">
-                                <div class="row margin-bottom-50">
-                                    <!-- LISTING -->
-                                    <?php if(isset($theses) && count($theses) && $rowcount > 0) : $i = 0; ?>
-                                        <?php foreach ($theses as $thesis) : ?>
-                                            <article class="col-lg-3 col-md-4 col-sm-6 col-12">
-                                                <div class="pricing hover-effect">
-                                                    <div class="pricing-head">
-                                                        <h3>Tesis
-                                                        <span>
-                                                            <?php echo $thesis->get_status(); ?>
-                                                        </span>
-                                                        </h3>
-                                                        <span>
-                                                        <figure>
-                                                            <a><img style="height: 245px; width:100%; padding-top: 10px;" src="<?php echo $thesis->get_image(); ?>" alt="<?php echo $thesis->get_name(); ?>" /></a>
-                                                        </figure>
-                                                        </span>
-                                                        </h4>
-                                                    </div>
-                                                    <div class="pricing-footer">
-                                                        <p class="thesis-name">
-                                                            <?php echo $thesis->get_name(); ?>
-                                                        </p>
-                                                        <button type="submit" name="btnThesis" value="<?php echo $thesis->get_id(); ?>" class="btn btn-primary">Ver más</button>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        <?php $i++; endforeach; ?>
-                                    <?php endif; ?>
-                                    <!-- /.LISTING -->
-                                </div>
-                            </section>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- /.CONTENT -->
+            <!-- END SIDEBAR & CONTENT -->
 
         </div>
     </div>
-    <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+    <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
     <!-- BEGIN PRE-FOOTER -->
-    <?php include('footer-fixed.php'); ?>
+        <?php include('footer-fixed.php'); ?>
     <!-- END FOOTER -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->
@@ -202,8 +157,10 @@
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
+
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
     <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
