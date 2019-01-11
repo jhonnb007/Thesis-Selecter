@@ -120,6 +120,21 @@ function showTopic()
     });
 
 }
+
+function showSupport()
+{
+   $('#supportDiv').ready(function() {
+      getSupport();
+    });
+
+}
+
+function showTecnology()
+{
+   $('#divTecnology').ready(function() {
+      getTecnology();
+   });
+}
 function newTopic()
 {
      $("#frm_topic").on("submit", function (e)
@@ -137,6 +152,40 @@ function newTopic()
          });
      });
 }
+
+function newTecnology() {
+  $("#frm_tecnology").on("submit", function (e)
+  {
+    e.preventDefault();
+    var name = $("#input-newTecnology").val();
+    $.post("administrator/add.php",
+      {
+       newTecnology: name,
+      },
+       function(){
+         $("#tecnologyDiv").load(' #tecnologyDiv');
+         showTecnology();
+         $('#newTecnology').modal('hide');
+      });
+  });
+}
+
+function newSupport() {
+  $("#frm_support").on("submit", function (e)
+  {
+    e.preventDefault();
+    var name = $("#input-newSupport").val();
+    $.post("administrator/add.php",
+      {
+       newSupport: name,
+      },
+       function(){
+         $("#supportDiv").load(' #supportDiv');
+         showSupport();
+         $('#newSupport').modal('hide');
+      });
+  });
+}
 // function info()
 // {
 //   var x = $('#addThesisTopic').val();
@@ -146,10 +195,14 @@ $(document).ready(function()
 {
   getResearcher();
   showTopic();
+  showTecnology();
+  showSupport();
   getFundingAgency();
   getTecnology();
   getProfile();
   getSupport();
   newTopic();
+  newTecnology();
+  newSupport();
 
 });
