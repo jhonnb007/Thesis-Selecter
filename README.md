@@ -6,7 +6,7 @@ Before start working:
 1. git pull equipo selecter
 
 After finish working
-1. git checkout -b "(the new branch name to commit)"
+1. git checkout -b (the new branch name to commit)
 2. git status
 3. git add .
 4. git commit -m "(The title of the commit, i short description of the changes done)"
