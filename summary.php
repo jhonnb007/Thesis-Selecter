@@ -67,7 +67,7 @@
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+            <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
             <!-- BEGIN NAVIGATION -->
@@ -80,7 +80,7 @@
                             if (isset($_GET['thesis_tabs']))
                             {?>
                                 <ul>
-                                    <li><a href="/thesis-selecter">Tesis</a></li>
+                                    <li><a href="/Thesis-Selecter">Tesis</a></li>
                                     <li class="active"><a href="my-theses.php">Mis Tesis</a></li>
                                     <li><a href="requests.php">Solicitudes</a></li>
                                     <li class="dropdown">
@@ -118,7 +118,7 @@
                             else
                             {?>
                                 <ul>
-                                    <li class="active"><a href="/thesis-selecter">Tesis</a></li>
+                                    <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
                                     <li><a href="my-theses.php">Mis Tesis</a></li>
                                     <li><a href="requests.php">Solicitudes</a></li>
                                     <li class="dropdown">
@@ -159,7 +159,7 @@
                     else
                     {?>
                         <ul>
-                            <li class="active"><a href="/thesis-selecter">Tesis</a></li>
+                            <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
                             <li><a href="login.php">Asesores</a></li>
                             <li><a href="about.php">Sobre Nosotros</a></li>
                             <!-- BEGIN TOP SEARCH -->
@@ -195,7 +195,7 @@
             if (isset($_GET['thesis_tabs']))
             {?>
                 <ul class="breadcrumb">
-                    <li><a href="/thesis-selecter">Inicio</a></li>
+                    <li><a href="/Thesis-Selecter">Inicio</a></li>
                     <li><a href="my-theses.php">Mis Tesis</a></li>
                     <li><a href="tabs.php">Detalle</a></li>
                     <li class="active">Resumen</li>
@@ -205,8 +205,8 @@
             else
             {?>
                 <ul class="breadcrumb">
-                    <li><a href="/thesis-selecter">Inicio</a></li>
-                    <li><a href="/thesis-selecter">Tesis</a></li>
+                    <li><a href="/Thesis-Selecter">Inicio</a></li>
+                    <li><a href="/Thesis-Selecter">Tesis</a></li>
                     <li><a href="inside.php?thesis_id=<?php echo $_SESSION['thesis']->get_id();?>">Detalle</a></li>
                     <li class="active">Resumen</li>
                 </ul>
@@ -265,7 +265,7 @@
 
         </div>
     </div>
-     <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
+     <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
     <!-- END FOOTER -->

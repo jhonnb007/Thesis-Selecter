@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+$version = apache_get_version();
+echo "$version\n";
 include_once 'assets/code/include/db_functions.php';
 include_once 'assets/code/researcher.php';
 include_once 'assets/code/administrador.php';
@@ -160,13 +162,14 @@ if (isset($_POST['btnReject']))
              <br><br>
         </div>
     </div>
-  </body>
-    <?php include('assets\pages\modals\Administrator\reject.php'); ?>
-    <?php include('assets\pages\modals\Administrator\view-thesis.php'); ?>
-    <?php include('assets\pages\modals\Administrator\accept.php'); ?>
-    <?php include('assets\pages\modals\Administrator\revertir.php'); ?>
+    <?php include('assets/pages/modals/Administrator/reject.php'); ?>
+    <?php include('assets/pages/modals/Administrator/view-thesis.php'); ?>
+    <?php include('assets/pages/modals/Administrator/accept.php'); ?>
+    <?php include('assets/pages/modals/Administrator/revertir.php'); ?>
     <?php include('footer-fixed.php'); ?>
-    <?php include('assets\pages\modals\Administrator\profile.php'); ?>
+    <?php include('assets/pages/modals/Administrator/profile.php'); ?>
+  </body>
+
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>

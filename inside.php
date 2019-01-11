@@ -76,7 +76,7 @@
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+            <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
@@ -85,7 +85,7 @@
                     if (isset($_SESSION['researcher']))
                     {?>
                         <ul>
-                            <li class="active"><a href="/thesis-selecter">Tesis</a></li>
+                            <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
                             <li><a href="my-theses.php">Mis Tesis</a></li>
                             <li><a href="requests.php">Solicitudes</a></li>
                             <li class="dropdown">
@@ -123,7 +123,7 @@
                     else
                     {?>
                         <ul>
-                            <li class="active"><a href="/thesis-selecter">Tesis</a></li>
+                            <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
                             <li><a href="login.php">Asesores</a></li>
                             <li><a href="about.php">Sobre Nosotros</a></li>
                             <!-- BEGIN TOP SEARCH -->
@@ -156,8 +156,8 @@
         <div class="container">
 
         <ul class="breadcrumb">
-            <li><a href="/thesis-selecter">Inicio</a></li>
-            <li><a href="/thesis-selecter">Tesis</a></li>
+            <li><a href="/Thesis-Selecter">Inicio</a></li>
+            <li><a href="/Thesis-Selecter">Tesis</a></li>
             <li class="active">Detalle</li>
         </ul>
 
@@ -249,7 +249,7 @@
                 <div class="col-lg-4 col-lg-offset-4 text-center padding-top-20 margin-bottom-40">
                     <button class="btn btn-primary" disabled="true">Solicitar tesis</button>
                     <button onclick="window.location.href='summary.php'" class="btn btn-primary">Ver resumen</button>
-                    <button type="button" onclick="window.location.href='/thesis-selecter'" class="btn btn-default">Regresar</button>
+                    <button type="button" onclick="window.location.href='/Thesis-Selecter'" class="btn btn-default">Regresar</button>
                 </div>
             </div>
             <?php
@@ -260,9 +260,9 @@
                 {?>
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-4 text-center padding-top-20 margin-bottom-40">
-                        <button type="submit" onclick="window.location.href='request.php'" class="btn btn-primary">Solicitar tesis</button>
+                        <button type="submit" onclick="window.location.href='federated_info.php'" class="btn btn-primary">Solicitar tesis</button>
                         <button onclick="window.location.href='summary.php'" class="btn btn-primary">Ver resumen</button>
-                        <button type="button" onclick="window.location.href='/thesis-selecter'" class="btn btn-default">Regresar</button>
+                        <button type="button" onclick="window.location.href='/Thesis-Selecter'" class="btn btn-default">Regresar</button>
                     </div>
                 </div>
                 <?php
@@ -273,7 +273,7 @@
                     <div class="col-lg-4 col-lg-offset-4 text-center padding-top-20 margin-bottom-40">
                         <button title="Número de alumnos requeridos completado." class="btn btn-danger" disabled="true">Tesis no disponible</button>
                         <button onclick="window.location.href='summary.php'" class="btn btn-primary">Ver resumen</button>
-                        <button type="button" onclick="window.location.href='/thesis-selecter'" class="btn btn-default">Regresar</button>
+                        <button type="button" onclick="window.location.href='/Thesis-Selecter'" class="btn btn-default">Regresar</button>
                     </div>
                 </div>
                 <?php
@@ -282,7 +282,7 @@
         ?>
         </div>
     </div>
-        <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
+        <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
     <!-- END FOOTER -->

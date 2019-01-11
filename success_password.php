@@ -70,12 +70,12 @@ if (!isset($_SESSION['researcher']))
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+            <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
-                    <li><a href="/thesis-selecter">Tesis</a></li>
+                    <li><a href="/Thesis-Selecter">Tesis</a></li>
                     <li><a href="my-theses.php">Mis Tesis</a></li>
                     <li><a href="requests.php">Solicitudes</a></li>
                     <li class="active dropdown">
@@ -142,13 +142,13 @@ if (!isset($_SESSION['researcher']))
 
             <div class="row margin-bottom-60">
                 <div class="col-lg-4 col-lg-offset-4 text-center margin-bottom-40" style="margin-top: -50px">
-                    <button onclick="window.location.href='/thesis-selecter'" class="btn btn-primary">¡Entendido!</button>
+                    <button onclick="window.location.href='/Thesis-Selecter'" class="btn btn-primary">¡Entendido!</button>
                 </div>
             </div>
 
         </div>
     </div>
-    <?php include('assets\pages\modals\Researcher\profile-teacher.php') ?>
+    <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer-fixed.php'); ?>

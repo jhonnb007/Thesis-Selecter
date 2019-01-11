@@ -10,12 +10,12 @@
 
 
 
-				
+
 	function loginAdmin($emailAdmin, $passwordAdmin)
   {
   	global $connection;
 		$administrador = new Administrador;
-	  $administrador_query = 'select administrador.AdministradorID, administrador.AdministradorName, administrador.AdministradorEmail, administrador.AdministradorTelephone, school.SchoolName, administrador.ProfilePicture from administrador INNER JOIN School ON administrador.SchoolID = school.SchoolID where administrador.AdministradorEmail = ? and administrador.AdministradorPassword = ?';
+	  $administrador_query = 'select administrador.AdministradorID, administrador.AdministradorName, administrador.AdministradorEmail, administrador.AdministradorTelephone, school.SchoolName, administrador.ProfilePicture from administrador INNER JOIN school ON administrador.SchoolID = school.SchoolID where administrador.AdministradorEmail = ? and administrador.AdministradorPassword = ?';
 		$stmt = $connection->stmt_init();
 
 		if ($stmt->prepare($administrador_query)) {

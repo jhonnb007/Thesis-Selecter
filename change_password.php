@@ -108,12 +108,12 @@
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="/thesis-selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
+            <a class="site-logo" href="/Thesis-Selecter"><img src="assets/corporate/img/logos/logo-theses-turquoise.png" alt="Thesis Selecter"></a>
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
-                    <li><a href="/thesis-selecter">Tesis</a></li>
+                    <li><a href="/Thesis-Selecter">Tesis</a></li>
                     <li><a href="my-theses.php">Mis Tesis</a></li>
                     <li><a href="requests.php">Solicitudes</a></li>
                     <li class="dropdown active">
