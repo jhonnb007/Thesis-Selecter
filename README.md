@@ -10,5 +10,6 @@ After finish working
 2. git status
 3. git add .
 4. git commit -m "(The title of the commit, i short description of the changes done)"
-5. git push origin selecter  <-- selecter is the branch we will be working on
-6. git pull equipo selecter
+5. git push origin (the new branch name to commit) 
+After Merge Request
+6. git pull equipo selecter <-- selecter is the branch we will be working on
