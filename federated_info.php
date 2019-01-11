@@ -6,7 +6,7 @@
    $name = $atributos["givenName"][0];
    $ap = $atributos["sn"][0];
    if($saml->isAuthenticated()){ //Si hay sesi�n iniciada, hacer logout del IDP
-		$saml->logout("http://127.0.0.1/Thesis-Selecter/request.php?mail=$correo&name=$name&ap=$ap");  	// Se puede pasar como parametro a donde redireccionar tras el logout
+		$saml->logout("http://".$_SERVER['SERVER_NAME']."/Thesis-Selecter/request.php?mail=$correo&name=$name&ap=$ap");  	// Se puede pasar como parametro a donde redireccionar tras el logout
   }else{
 		header("Location:".$SP_URL);
   }

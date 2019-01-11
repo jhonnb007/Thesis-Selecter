@@ -193,16 +193,18 @@
                             <select class="form-control" id="addThesisProfile" name="addThesisProfile" required="required"></select>
                         </div>
                     </div>
-                    <div class="form-group col-sm-12">
-                        <label for="addThesisProfile" class="col-lg-4 control-label">Tecnologías: <span class="require">*</span></label>
+                    <div id="tecnologyDiv" class="form-group col-sm-12">
+                        <label for="addThesisTecnology" class="col-lg-4 control-label">Tecnologías: <span class="require">*</span></label>
                         <div class="col-lg-8">
                             <select multiple="multiple" class="form-control" id="addThesisTecnology" name="addThesisTecnology" required="required"></select>
+                            <font>Si no encontró la tecnología requerida, agregue uno nuevo  <a href="" data-toggle="modal" data-target="#newTecnology">aqui</a> </font>
                         </div>
                     </div>
-                    <div class="form-group col-sm-12">
+                    <div id="supportDiv" class="form-group col-sm-12">
                         <label for="addThesisSupport" class="col-lg-4 control-label">Tipo de apoyo: <span class="require">*</span></label>
                         <div class="col-lg-8">
                             <select multiple="multiple" class="form-control" id="addThesisSupport" name="addThesisSupport" required="required"></select>
+                            <font>Si no encontró el tipo de apoyo, agregue uno nuevo  <a href="" data-toggle="modal" data-target="#newSupport">aqui</a> </font>
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
@@ -235,6 +237,8 @@
                 <!-- END CONTENT -->
             <!-- END SIDEBAR & CONTENT -->
         <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+        <?php include('assets/pages/modals/Researcher/add-tecnology.php') ?>
+        <?php include('assets/pages/modals/Researcher/add-support.php') ?>
         <?php include('assets/pages/modals/Researcher/add-topic.php') ?>
 
 
