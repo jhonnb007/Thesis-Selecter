@@ -10,12 +10,14 @@
   {
     if (!empty($_FILES['addThesisPicture'] && $_POST['addThesisName'] && $_POST['addThesisTopic'] && $_POST['addThesisPlaza'] && $_POST['addThesisProfile'] && $_POST['addThesisAgency'] && $_POST['addThesisTecnology'] && $_POST['addThesisSupport'] && $_POST['addThesisSummary']))
     {
+
       global $connection;
       $action = $_SESSION['researcher']->get_email();
       $sql = "SELECT ResearcherID, ResearchLineID, ResearchGroupID FROM researcher where EmailAddress = '$action'";
       $result = $connection->query($sql);
       if ($result->num_rows > 0) {
            while($row = $result->fetch_assoc()) {
+
              $researcher = $row['ResearcherID'];
              $group = $row['ResearchGroupID'];
              $line = $row['ResearchLineID'];
@@ -32,17 +34,62 @@
       $foto=$_FILES["addThesisPicture"]["name"];
       $ruta=$_FILES["addThesisPicture"]["tmp_name"];
       $picture="assets/pages/img/thesis/".$foto;
+      if (strlen($summary) < 100 )
+      {
+        header("location: add-thesis.php?err=1");
+      }
+
       move_uploaded_file($ruta,$picture);
-      $sql = "INSERT INTO `thesis` (`ThesisID`, `ThesisName`, `LevelID`, `PlazasID`, `ResearcherID`, `StatusID`, `TopicID`, `EducativeProgramID`, `FundingAgencyID`, `FundingAgencyAllID`, `ResearchGroupID`, `ResearchLineID`, `SupportID`, `ProjectID`, `RequirementsID`, `SscID`, `Assigned`, `Summary`, `Category`, `Image`, `ImageIn`) VALUES (NULL, '$name', '2', '$plazas', '$researcher', '1', '$topic', '$profile', '2', '$agency', '$group', '$line', '$support', NULL, '$tecnology', NULL, '0', '$summary', '2', '$picture', '$picture')";
+
+      foreach ($tecnology as $tec)
+      {
+        $tecAux .= $tec. " ";
+      }
+        
+        if (empty($support[0]))
+        {
+          $support[0] = 'NULL';
+        }
+        if (empty($support[1]))
+        {
+          $support[1] = 'NULL';
+        }
+        if (empty($support[2]))
+        {
+          $support[2] = 'NULL';
+        }
+        if (empty($support[3]))
+        {
+          $support[3] = 'NULL';
+        }
+        if (empty($topic[0]))
+        {
+          $topic[0] = 'NULL';
+        }
+        if (empty($topic[1]))
+        {
+          $topic[1] = 'NULL';
+        }
+        if (empty($topic[2]))
+        {
+          $topic[2] = 'NULL';
+        }
+        if (empty($topic[3]))
+        {
+          $topic[3] = 'NULL';
+        }
+
+      $sql = "INSERT INTO `thesis` (`ThesisID`, `ThesisName`, `LevelID`, `PlazasID`, `ResearcherID`, `StatusID`, `TopicID`, `TopicID2`, `TopicID3`, `TopicID4`, `EducativeProgramID`, `FundingAgencyID`, `FundingAgencyAllID`, `ResearchGroupID`, `ResearchLineID`, `SupportID`, `SupportID2`, `SupportID3`, `SupportID4`, `ProjectID`, `RequirementsID`,`RequirementsAll`, `SscID`, `Assigned`, `Summary`, `Category`, `Image`, `ImageIn`) VALUES (NULL, '$name', '2', '$plazas', '$researcher', '1', $topic[0], $topic[1], $topic[2], $topic[3], '$profile', '2', '$agency', '$group', '$line', $support[0], $support[1], $support[2], $support[3], NULL, '1','$tecAux', NULL, '0', '$summary', '2', '$picture', '$picture')";
+      echo $sql;
       if ($connection->query($sql) === TRUE) {
          header("location: success_researcher.php");
          } else {
-           header("location: error_researcher.php");
+           echo "mal query";
 
         }
        $connection->close();
     }else {
-      header("location: error_researcher.php");
+
 
     }
   }
@@ -174,17 +221,21 @@
                         </div>
                     </div>
                     <div id="topicDiv" class="form-group col-sm-12">
-                        <label for="addThesisTopic" class="col-lg-4 control-label">Tema Central: <span class="require">*</span></label>
+                        <label for="addThesisTopic" class="col-lg-4 control-label">Temas centrales: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <select style="width:100px;height:200px;" multiple="multiple" class="form-control" id="addThesisTopic" name="addThesisTopic" required="required"></select>
+                          <select style="width:100px;height:200px;" multiple="multiple" class="form-control" id="addThesisTopic" name="addThesisTopic[]" required="required"></select>
                           <font>Si no encontró tema, agregue uno nuevo  <a href="" data-toggle="modal" data-target="#newTopic">aqui</a> </font>
                         </div>
                     </div>
-
                     <div class="form-group col-sm-12">
                         <label for="addThesisPlaza" class="col-lg-4 control-label">Alumnos requeridos: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <select class="form-control" id="addThesisPlaza" name="addThesisPlaza" required="required"></select>
+                          <select class="form-control" id="addThesisPlaza" name="addThesisPlaza" required="required">
+                             <option value=""></option>
+                             <option value="1">Uno</option>
+                             <option value="2">Dos</option>
+                             <option value="3">Tres</option>
+                          </select>
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
@@ -196,14 +247,14 @@
                     <div id="tecnologyDiv" class="form-group col-sm-12">
                         <label for="addThesisTecnology" class="col-lg-4 control-label">Tecnologías: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                            <select multiple="multiple" class="form-control" id="addThesisTecnology" name="addThesisTecnology" required="required"></select>
+                            <select multiple="multiple" class="form-control" id="addThesisTecnology" name="addThesisTecnology[]" required="required"></select>
                             <font>Si no encontró la tecnología requerida, agregue uno nuevo  <a href="" data-toggle="modal" data-target="#newTecnology">aqui</a> </font>
                         </div>
                     </div>
                     <div id="supportDiv" class="form-group col-sm-12">
                         <label for="addThesisSupport" class="col-lg-4 control-label">Tipo de apoyo: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                            <select multiple="multiple" class="form-control" id="addThesisSupport" name="addThesisSupport" required="required"></select>
+                            <select multiple="multiple" class="form-control" id="addThesisSupport" name="addThesisSupport[]" required="required"></select>
                             <font>Si no encontró el tipo de apoyo, agregue uno nuevo  <a href="" data-toggle="modal" data-target="#newSupport">aqui</a> </font>
                         </div>
                     </div>
@@ -214,12 +265,12 @@
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
-                      <label for="addPicture" class="col-lg-4 control-label">Imagen: <span class="require">*</span></label>
+                      <label for="addPicture" class="col-lg-4 control-label">Imagen (jpeg): <span class="require">*</span></label>
                       <div class="col-lg-8 div-input">
-                         <input id="addThesisPicture" name="addThesisPicture" required="required" type="file" class="filestyle" data-text="Explorar" accept="image/*">                      </div>
+                         <input id="addThesisPicture" name="addThesisPicture" required="required" type="file" class="filestyle" data-text="Explorar" accept="image/jpeg">                      </div>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label for="addThesisSummary" class="col-lg-4 control-label">Resumen: <span class="require">*</span></label>
+                        <label for="addThesisSummary" class="col-lg-4 control-label">Resumen (100-200 palabras): <span class="require">*</span></label>
                         <div class="col-lg-8">
                             <textarea class="form-control" id="addThesisSummary" name="addThesisSummary" required="required" rows="8" cols="80"></textarea>
                         </div>
@@ -236,6 +287,16 @@
         </form>
                 <!-- END CONTENT -->
             <!-- END SIDEBAR & CONTENT -->
+        <?php
+           if(isset($_GET['err']))
+           {
+        ?>
+        <script>
+           alert("No se permiten menos de 20 carateres tienes que añadir mas !! ");
+        </script>
+        <?php
+           }
+        ?>
         <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
         <?php include('assets/pages/modals/Researcher/add-tecnology.php') ?>
         <?php include('assets/pages/modals/Researcher/add-support.php') ?>

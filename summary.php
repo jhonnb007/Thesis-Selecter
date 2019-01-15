@@ -265,7 +265,6 @@
 
         </div>
     </div>
-     <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
     <!-- END FOOTER -->
@@ -292,5 +291,7 @@
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
+<?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+
 <!-- END BODY -->
 </html>

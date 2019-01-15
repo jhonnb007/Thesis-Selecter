@@ -901,7 +901,6 @@ xmlns="http://www.w3.org/TR/REC-html40">
         <!-- END TABS -->
         </div>
     </div>
-    <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
@@ -930,5 +929,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
+<?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+
 <!-- END BODY -->
 </html>

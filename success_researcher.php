@@ -131,9 +131,9 @@ if (!isset($_SESSION['researcher']))
                         </h2>
 
                        <div class="details">
-                            <h3 class="text-center">Tu solicitud ha sido enviada con éxito.</h3>
+                            <h3 class="text-center">La información enviada con éxito.</h3>
                         <p>
-                            La solicitud de Tesis se envio correctamente al administrador.
+                            Información de Tesis enviada correctamente al administrador.
                         <p class="text-center" style="margin-top: -15px; margin-bottom: -10px;">
                             Una vez aceptada, aparecerá en la plataforma para su selección.
                         </p>

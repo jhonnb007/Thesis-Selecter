@@ -6,12 +6,14 @@
 		private $level;
 		private $researcher;
 		private $topic;
+		private $topic2;
 		private $educative_program;
 		private $funding_agency;
 		private $project;
 		private $plazas;
 		private $summary;
 		private $requirements;
+		private $requirementsALL;
 		private $image;
 		private $assigned;
                 private $support;
@@ -47,6 +49,11 @@
 			$this->topic = $topic;
 		}
 
+		public function set_topic2($topic2)
+		{
+			$this->topic2 = $topic2;
+		}
+
 		public function set_educative_program($educative_program)
 		{
 			$this->educative_program = $educative_program;
@@ -55,6 +62,10 @@
 		public function set_requirements($requirements)
 		{
 			$this->requirements = $requirements;
+		}
+		public function set_requirementsALL($requirementsALL)
+		{
+			$this->requirementsALL = $requirementsALL;
 		}
 
 		public function set_funding_agency($funding_agency)
@@ -122,6 +133,10 @@
 		{
 			return $this->topic;
 		}
+		public function get_topic2()
+		{
+			return $this->topic2;
+		}
 
 		public function get_educative_program()
 		{
@@ -131,6 +146,11 @@
 		public function get_requirements()
 		{
 			return $this->requirements;
+		}
+
+		public function get_requirementsALL()
+		{
+			return $this->requirementsALL;
 		}
 
 		public function has_funding_agency()

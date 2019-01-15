@@ -32,8 +32,8 @@
     <!-- Global styles START -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets\plugins\DataTables\DataTables-1.10.18\css\dataTables.bootstrap4.min.css">
-    <link href="assets\plugins\DataTables\DataTables-1.10.18\css\jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/plugins/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link href="assets/plugins/DataTables/DataTables-1.10.18\css\jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <!-- <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css  " rel="stylesheet" type="text/css"> -->
 
     <!-- Global styles END -->

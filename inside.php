@@ -182,7 +182,7 @@
                 </tr>
                 <tr>
                     <td width="34%"><h4><a href="javascript:;">Tema Central:</a></h4></td>
-                    <td><?php echo $_SESSION['thesis']->get_topic();?></td>
+                    <td><?php echo $_SESSION['thesis']->get_topic()." ".$_SESSION['thesis']->get_topic2();?></td>
                 </tr>
                 <tr>
                     <td><h4><a href="javascript:;">Grupo de Investigación:</a></h4></td>
@@ -198,7 +198,7 @@
                 </tr>
                 <tr>
                     <td><h4><a href="javascript:;">Tecnologías:</a></h4></td>
-                    <td><?php echo $_SESSION['thesis']->get_requirements();?></td>
+                    <td><?php echo $_SESSION['thesis']->get_requirementsALL();?></td>
                 </tr>
                 <tr>
                     <td><h4><a href="javascript:;">Número de alumnos requeridos:</a></h4></td>
@@ -282,7 +282,7 @@
         ?>
         </div>
     </div>
-        <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
     <!-- END FOOTER -->
@@ -309,5 +309,6 @@
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
+<?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
 <!-- END BODY -->
 </html>
