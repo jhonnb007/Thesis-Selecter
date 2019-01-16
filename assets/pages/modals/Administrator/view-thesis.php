@@ -33,25 +33,15 @@
                   </div>
 
                 <tr>
-                    <td width="34%"><h5><a href="">Tema Central:</a></h5></td>
-                    <td> <select id="central_topic" class="form form-control" name="topic"></select></td>
-                </tr>
-                <tr>
-                    <td><h5><a href="">Perfil de Estudiante:</a></h5></td>
-                    <td> <select id="student_profile" class="form form-control" name="profile"></select></td>
-                </tr>
-                <tr>
                     <td><h5><a href="">Tecnologías:</a></h5></td>
-                    <td> <select id="tecnology" class="form form-control" name="tecnology"></select></td>
+                    <td>
+                    <input type="text"  id="tecnology" class="form form-control" name="tecnology">
+                    </td>
                 </tr>
                 <tr>
                     <td><h5><a href="">Nombre del asesor:</a></h5></td>
                     <td><input type="text" name="researcher" class="form form-control" id="researcher"></td>
-                </tr>
-                <tr>
-                    <td><h5><a href="">Tipo de apoyo al alumno:</a></h5></td>
-                    <td> <select id="support" class="form form-control" name="tecnology"></select></td>
-                </tr>
+                </tr>                
                 <tr>
                     <td><h5><a href="">Institución financiadora:</a></h5></td>
                     <td><select id="funding_agency" class="form form-control" name="agency"></select></td>

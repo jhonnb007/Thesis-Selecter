@@ -1,3 +1,4 @@
+
 function getSupport()
 {
   $.getJSON("administrator/details.php", function (result) {
@@ -62,7 +63,7 @@ function getTecnology()
   $.getJSON("administrator/requirements.php", function (result) {
     var arrayConcat="";
     for (var i = 0; i < result.length; i++) {
-        arrayConcat = arrayConcat.concat("<option value="+result[i].RequirementsID+"> "+result[i].RequirementsName+"</option>")
+        arrayConcat = arrayConcat.concat("<option value="+result[i].RequirementsName+"> "+result[i].RequirementsName+"</option>")
       }
         $("#addThesisTecnology").html(arrayConcat);
         $(function() {
@@ -186,11 +187,15 @@ function newSupport() {
       });
   });
 }
-// function info()
-// {
-//   var x = $('#addThesisTopic').val();
-//   alert(x);
-// }
+function info()
+{
+  var x = $('#addThesisTopic').val();
+  alert(x);
+  var y = $('#addThesisSupport').val();
+  alert(y);
+  var z = $('#addThesisTecnology').val();
+  alert(z);
+}
 $(document).ready(function()
 {
   getResearcher();

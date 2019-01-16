@@ -6,10 +6,10 @@
 	include_once 'assets/code/university.php';
 	include_once 'assets/code/school.php';
 	include_once 'assets/code/educative_program.php';
-        include_once 'assets/code/student.php';
+  include_once 'assets/code/student.php';
 
-
-
+	define('urlFile', "https://".$_SERVER['SERVER_NAME']."/content/tesis/");
+	define('dirFile', "/sftp/content/tesis/");
 
 	function loginAdmin($emailAdmin, $passwordAdmin)
   {
@@ -45,7 +45,7 @@
 		global $connection;
 		$researcher = new Researcher;
 		$researcher_query = "SELECT R.ResearcherID, R.ResearcherName, R.EmailAddress, R.TelephoneNumber, RG.ResearchGroupName, RL.ResearchLineName, RM.RoomName, B.BuildingName, S.SchoolName, U.UniversityName, R.ImageProfile FROM researcher as R INNER JOIN research_group as RG ON R.ResearchGroupID = RG.ResearchGroupID INNER JOIN research_line as RL ON R.ResearchLineID = RL.ResearchLineID INNER JOIN room as RM ON RM.RoomID = R.RoomID INNER JOIN building as B ON B.BuildingID = RM.BuildingID INNER JOIN school as S ON S.SchoolID = R.SchoolID INNER JOIN university as U ON U.UniversityID = S.UniversityID WHERE EmailAddress = ? AND EmailPassword = ?";
-		$thesis_query = "SELECT T.ThesisID, R.ResearcherName, T.ThesisName, L.LevelName, S.StatusName, TP.TopicName, E.EducativeProgramName, F.FundingAgencyAllName, T.PlazasID, RG.ResearchGroupName, RL.ResearchLineName, SP.SupportName, T.Assigned, T.Summary, T.Image, T.ImageIn, RQ.RequirementsName FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID INNER JOIN requirements as RQ ON RQ.RequirementsID = T.RequirementsID WHERE T.ResearcherID = ? AND Category = 1";
+		$thesis_query = "SELECT T.ThesisID, R.ResearcherName, T.ThesisName, L.LevelName, S.StatusName, TP.TopicName, E.EducativeProgramName, F.FundingAgencyAllName, T.PlazasID, RG.ResearchGroupName, RL.ResearchLineName, SP.SupportName, T.Assigned, T.Summary, T.Image, T.ImageIn, RQ.RequirementsName, T.RequirementsALL FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID INNER JOIN requirements as RQ ON RQ.RequirementsID = T.RequirementsID WHERE T.ResearcherID = ? AND Category = 1";
 		$stmt = $connection->stmt_init();
 
 		if ($stmt->prepare($researcher_query)) {
@@ -87,6 +87,8 @@
 						$thesis->set_summary($row['Summary']);
 						$thesis->set_image($row['Image']);
 						$thesis->set_requirements($row['RequirementsName']);
+						$thesis->set_requirementsALL($row['RequirementsALL']);
+
 						$thesis->set_assigned($row['Assigned']);
                                                 $thesis->set_status($row['StatusName']);
                                                 $thesis->set_image_in($row['ImageIn']);
@@ -115,7 +117,7 @@
 				$params["secure"], $params["httponly"]
 			);
 		}
-
+		error_log("Destruyendo...");
 	    session_destroy();
 	}
 
@@ -123,7 +125,7 @@
 	{
 		global $connection;
 		$theses = array();
-		$query = "SELECT T.ThesisID, R.ResearcherName, R.ResearcherID, R.EmailAddress, R.TelephoneNumber, R.ResearchGroupID, R.ResearchLineID,  R.RoomID, R.SchoolID, T.ThesisName, L.LevelName, S.StatusName, TP.TopicName, E.EducativeProgramName, F.FundingAgencyAllName, RQ.RequirementsName, T.PlazasID, RG.ResearchGroupName, RL.ResearchLineName, RG.ResearchGroupKey, RQ.RequirementsID, SP.SupportName, T.Assigned, T.Summary, T.Image, U.UniversityName, Sch.SchoolName, RM.RoomName, B.BuildingName, T.ImageIn, R.ImageProfile
+		$query = "SELECT T.ThesisID, R.ResearcherName, R.ResearcherID, R.EmailAddress, R.TelephoneNumber, R.ResearchGroupID, R.ResearchLineID,  R.RoomID, R.SchoolID, T.ThesisName, L.LevelName, S.StatusName, TP.TopicName, E.EducativeProgramName, F.FundingAgencyAllName, RQ.RequirementsName, T.PlazasID, RG.ResearchGroupName, RL.ResearchLineName, RG.ResearchGroupKey, RQ.RequirementsID, T.RequirementsALL, SP.SupportName, T.Assigned, T.Summary, T.Image, U.UniversityName, Sch.SchoolName, RM.RoomName, B.BuildingName, T.ImageIn, R.ImageProfile
 					FROM thesis as T INNER JOIN level as L ON T.LevelID = L.LevelID INNER JOIN researcher as R ON T.ResearcherID = R.ResearcherID INNER JOIN status as S ON S.StatusID = T.StatusID INNER JOIN topic as TP ON TP.TopicID = T.TopicID INNER JOIN educative_program as E ON E.EducativeProgramID = T.EducativeProgramID INNER JOIN requirements as RQ ON RQ.RequirementsID = T.RequirementsID INNER JOIN funding_agency_all as F ON F.FundingAgencyAllID = T.FundingAgencyAllID INNER JOIN research_group as RG ON RG.ResearchGroupID = T.ResearchGroupID INNER JOIN research_line as RL ON RL.ResearchLineID = T.ResearchLineID INNER JOIN support as SP ON SP.SupportID = T.SupportID INNER JOIN school as Sch ON Sch.SchoolID = R.SchoolID INNER JOIN university as U ON U.UniversityID = Sch.UniversityID INNER JOIN room as RM ON RM.RoomID = R.RoomID INNER JOIN building as B on B.BuildingID = RM.BuildingID ORDER BY T.ThesisID";
 
 		$stmt = $connection->stmt_init();
@@ -161,6 +163,7 @@
 				$thesis->set_plazas($row['PlazasID']);
 				$thesis->set_summary($row['Summary']);
 				$thesis->set_requirements($row['RequirementsName']);
+				$thesis->set_requirementsALL($row['RequirementsALL']);
 				$thesis->set_image($row['Image']);
 				$thesis->set_assigned($row['Assigned']);
                                 $thesis->set_support($row['SupportName']);
@@ -501,6 +504,27 @@
                 return $status_id;
             }
         }
+
+        function get_thesis_status_id($thesis_id)
+        {
+            global $connection;
+            $query_status = "SELECT StatusID FROM thesis WHERE ThesisID = ?";
+            //$thesis_id = $thesis->get_id();
+            $stmt = $connection->stmt_init();
+
+            if ($stmt->prepare($query_status)) {
+                $stmt->bind_param("i", $thesis_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+
+                $status_id = $row['StatusID'];
+
+                return $status_id;
+            }
+        }		
+		
 
         function get_thesis_status_std($thesis)
         {

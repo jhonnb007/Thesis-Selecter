@@ -3,10 +3,14 @@
     include_once 'assets/code/researcher.php';
     include_once 'assets/code/thesis.php';
     include_once 'assets/code/student.php';
+    require_once("config.php");
 
     session_start();
 
     if (!isset($_SESSION['researcher']))
+    {
+        header("Location: error-permission.php");
+    }else if ($saml->isAuthenticated())
     {
         header("Location: error-permission.php");
     }
@@ -901,7 +905,6 @@ xmlns="http://www.w3.org/TR/REC-html40">
         <!-- END TABS -->
         </div>
     </div>
-    <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
 
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
@@ -930,5 +933,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
+<?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+
 <!-- END BODY -->
 </html>

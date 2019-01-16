@@ -82,14 +82,9 @@ function enaledEdit()
    $("#edit").removeAttr('disabled');
    $("#thesis_name").attr('disabled','disabled');
    $("#thesis_picture").attr('disabled','disabled');
-   $("#central_topic").attr('disabled','disabled');
-   $("#research_group").attr('disabled','disabled');
-   $("#research_line").attr('disabled','disabled');
-   $("#student_profile").attr('disabled','disabled');
    $("#tecnology").attr('disabled','disabled');
    $("#plazas").attr('disabled','disabled');
    $("#researcher").attr('disabled','disabled');
-   $("#support").attr('disabled','disabled');
    $("#funding_agency").attr('disabled','disabled');
    $("#summary").attr('disabled','disabled');
    $("#save").attr('disabled','disabled');
@@ -101,13 +96,8 @@ function editable()
    $("#edit").attr('disabled','disabled');
    $("#thesis_name").removeAttr('disabled');
    $("#thesis_picture").removeAttr('disabled');
-   $("#central_topic").removeAttr('disabled');
-   $("#research_group").removeAttr('disabled');
-   $("#research_line").removeAttr('disabled');
    $("#student_profile").removeAttr('disabled');
-   $("#tecnology").removeAttr('disabled');
    $("#plazas").removeAttr('disabled');
-   $("#support").removeAttr('disabled');
    $("#funding_agency").removeAttr('disabled');
    $("#summary").removeAttr('disabled');
    $("#save").removeAttr('disabled');
@@ -135,52 +125,46 @@ function getThesisHtml(id, result) {
       $("#thesisID").html(result[i].ThesisID);
       $("#thesis_name").attr("value",result[i].ThesisName);
       $("#thesis_picture").attr("src",result[i].Image);
-      $("#central_topic").attr("value",result[i].TopicID);
-      $("#research_group").attr("value",result[i].ResearchGroupName);
-      $("#research_line").attr("value",result[i].ResearchLineName);
-      $("#student_profile").attr("value",result[i].EducativeProgramID);
-      $("#tecnology").attr("value",result[i].RequirementsID);
-      $("#plazas").attr("value",result[i].PlazasID);
+      $("#tecnology").attr("value",result[i].RequirementsALL);
       $("#researcher").attr("value",result[i].ResearcherName);
-      $("#support").attr("value",result[i].SupportID);
       $("#funding_agency").attr("value",result[i].FundingAgencyAllID);
       $("#summary").attr("value",result[i].Summary);
     }
   }
 }
 
-function getTopic(result)
-{
-  $.getJSON("administrator/topic.php", function (result) {
-    var arrayConcat="";
-    for (var i = 0; i < result.length; i++) {
-        arrayConcat = arrayConcat.concat("<option value="+result[i].TopicID+"> "+result[i].TopicName+"</option>")
-      }
-        $("#central_topic").html(arrayConcat);
- });
-}
+// function getTopic(result)
+// {
+//   $.getJSON("administrator/topic.php", function (result) {
+//     var arrayConcat="";
+//     for (var i = 0; i < result.length; i++) {
+//         arrayConcat = arrayConcat.concat("<option value="+result[i].TopicID+"> "+result[i].TopicName+"</option>")
+//       }
+//         $("#central_topic").html(arrayConcat);
+//  });
+// }
 
-function getProfile(result)
-{
-  $.getJSON("administrator/student_profile.php", function (result) {
-    var arrayConcat="";
-    for (var i = 0; i < result.length; i++) {
-        arrayConcat = arrayConcat.concat("<option value="+result[i].EducativeProgramID+"> "+result[i].EducativeProgramName+"</option>")
-      }
-        $("#student_profile").html(arrayConcat);
- });
-}
+// function getProfile(result)
+// {
+//   $.getJSON("administrator/student_profile.php", function (result) {
+//     var arrayConcat="";
+//     for (var i = 0; i < result.length; i++) {
+//         arrayConcat = arrayConcat.concat("<option value="+result[i].EducativeProgramID+"> "+result[i].EducativeProgramName+"</option>")
+//       }
+//         $("#student_profile").html(arrayConcat);
+//  });
+// }
 
-function getSupport(result)
-{
-  $.getJSON("administrator/details.php", function (result) {
-    var support="";
-    for (var i = 0; i < result.length; i++) {
-        support = support.concat("<option value="+result[i].SupportID+"> "+result[i].SupportName+"</option>")
-      }
-        $("#support").html(support);
- });
-}
+// function getSupport(result)
+// {
+//   $.getJSON("administrator/details.php", function (result) {
+//     var support="";
+//     for (var i = 0; i < result.length; i++) {
+//         support = support.concat("<option value="+result[i].SupportID+"> "+result[i].SupportName+"</option>")
+//       }
+//         $("#support").html(support);
+//  });
+// }
 
 function getFundingAgency(result)
 {
@@ -193,16 +177,16 @@ function getFundingAgency(result)
  });
 }
 
-function getTecnology(result)
-{
-  $.getJSON("administrator/requirements.php", function (result) {
-    var arrayConcat="";
-    for (var i = 0; i < result.length; i++) {
-        arrayConcat = arrayConcat.concat("<option value="+result[i].RequirementsID+"> "+result[i].RequirementsName+"</option>")
-      }
-        $("#tecnology").html(arrayConcat);
- });
-}
+// function getTecnology(result)
+// {
+//   $.getJSON("administrator/requirements.php", function (result) {
+//     var arrayConcat="";
+//     for (var i = 0; i < result.length; i++) {
+//         arrayConcat = arrayConcat.concat("<option value="+result[i].RequirementsID+"> "+result[i].RequirementsName+"</option>")
+//       }
+//         $("#tecnology").html(arrayConcat);
+//  });
+// }
 
 function headerAcceptID(id)
 {
@@ -280,20 +264,12 @@ function postModifyThesis()
      e.preventDefault();
      var id = $("#thesisID").text();
      var name = $("#thesis_name").val();
-     var topic = $("#central_topic").val();
-     var profile = $("#student_profile").val();
-     var tecnology = $("#tecnology").val();
-     var support = $("#support").val();
      var agency = $("#funding_agency").val();
      var summary = $("#summary").val();
      $.post("administrator/thesis.php",
        {
         modifyID: id,
         thesisName: name,
-        thesisTopic: topic,
-        thesisProfile: profile,
-        thesisTecnology: tecnology,
-        thesisSupport: support,
         thesisAgency: agency,
         thesisSummary: summary
        },
@@ -312,9 +288,6 @@ $(document).ready(function() {
   getRejectedTable();
   getThesisDetails(0);
   enaledEdit();
-  getSupport();
   getFundingAgency();
-  getTecnology();
-  getProfile();
-  getTopic();
+
 });

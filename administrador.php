@@ -5,12 +5,14 @@
     include_once 'assets/code/administrador.php';
     include_once 'assets/code/thesis.php';
     include_once 'assets/code/include/db_connection.php';
-
-
+    require_once("config.php");
 
     session_start();
 
     if (!isset($_SESSION['researcher']))
+    {
+        header("Location: error-permission.php");
+    }else if ($saml->isAuthenticated())
     {
         header("Location: error-permission.php");
     }
@@ -32,8 +34,8 @@
     <!-- Global styles START -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets\plugins\DataTables\DataTables-1.10.18\css\dataTables.bootstrap4.min.css">
-    <link href="assets\plugins\DataTables\DataTables-1.10.18\css\jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/plugins/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link href="assets/plugins/DataTables/DataTables-1.10.18\css\jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <!-- <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css  " rel="stylesheet" type="text/css"> -->
 
     <!-- Global styles END -->

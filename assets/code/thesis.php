@@ -12,6 +12,7 @@
 		private $plazas;
 		private $summary;
 		private $requirements;
+		private $requirementsALL;
 		private $image;
 		private $assigned;
                 private $support;
@@ -55,6 +56,10 @@
 		public function set_requirements($requirements)
 		{
 			$this->requirements = $requirements;
+		}
+		public function set_requirementsALL($requirementsALL)
+		{
+			$this->requirementsALL = $requirementsALL;
 		}
 
 		public function set_funding_agency($funding_agency)
@@ -122,6 +127,10 @@
 		{
 			return $this->topic;
 		}
+		public function get_topic2()
+		{
+			return $this->topic2;
+		}
 
 		public function get_educative_program()
 		{
@@ -131,6 +140,11 @@
 		public function get_requirements()
 		{
 			return $this->requirements;
+		}
+
+		public function get_requirementsALL()
+		{
+			return $this->requirementsALL;
 		}
 
 		public function has_funding_agency()

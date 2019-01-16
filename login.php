@@ -1,12 +1,16 @@
 <?php
     include_once 'assets/code/include/db_connection.php';
     include_once 'assets/code/include/db_functions.php';
+    require_once("config.php");
 
     session_start();
 
     if (isset($_SESSION['researcher']))
     {
         header("Location: error-permission.php");
+    }else if ($saml->isAuthenticated())
+    {
+      header("Location: error-permission.php");
     }
 
     if (isset($_POST['btnLogin']))

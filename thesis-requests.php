@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <?php
-$version = apache_get_version();
-echo "$version\n";
 include_once 'assets/code/include/db_functions.php';
 include_once 'assets/code/researcher.php';
 include_once 'assets/code/administrador.php';
 include_once 'assets/code/thesis.php';
 include_once 'assets/code/include/db_connection.php';
+require_once("config.php");
 
 session_start();
 
 if (!isset($_SESSION['researcher']))
+{
+    header("Location: error-permission.php");
+}else if ($saml->isAuthenticated())
 {
     header("Location: error-permission.php");
 }
