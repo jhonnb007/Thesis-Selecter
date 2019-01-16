@@ -1,16 +1,35 @@
 <?php
   include_once 'assets/code/include/db_connection.php';
   include_once 'assets/code/include/db_functions.php';
+  require_once("config.php");
   session_start();
   if (!isset($_SESSION['researcher']))
   {
       header("Location: error-permission.php");
+  } else if ($saml->isAuthenticated())
+  {
+      header("Location: error-permission.php");
   }
+//   $strServer = "*****";
+//   $strServerPort = "****";
+//   $strServerUsername = "*****";
+//   $strServerPassword = "*****";
+//   $csv_filename = "Test_File.csv";
+//
+//   //connect to server
+//   $resConnection = ssh2_connect($strServer, $strServerPort);
+//   if(ssh2_auth_password($resConnection, $strServerUsername, $strServerPassword)){
+//     //Initialize SFTP subsystem
+//     echo "connected";
+//
+// }
+// else{
+//     echo "Unable to authenticate on server";
+// }
   if (isset($_FILES['addThesisPicture'], $_POST['addThesisName'], $_POST['addThesisTopic'], $_POST['addThesisPlaza'], $_POST['addThesisProfile'], $_POST['addThesisAgency'], $_POST['addThesisTecnology'], $_POST['addThesisSupport'], $_POST['addThesisSummary']))
   {
     if (!empty($_FILES['addThesisPicture'] && $_POST['addThesisName'] && $_POST['addThesisTopic'] && $_POST['addThesisPlaza'] && $_POST['addThesisProfile'] && $_POST['addThesisAgency'] && $_POST['addThesisTecnology'] && $_POST['addThesisSupport'] && $_POST['addThesisSummary']))
     {
-
       global $connection;
       $action = $_SESSION['researcher']->get_email();
       $sql = "SELECT ResearcherID, ResearchLineID, ResearchGroupID FROM researcher where EmailAddress = '$action'";
@@ -31,21 +50,35 @@
       $tecnology = $_POST['addThesisTecnology'];
       $support = $_POST['addThesisSupport'];
       $summary = $_POST['addThesisSummary'];
-      $foto=$_FILES["addThesisPicture"]["name"];
-      $ruta=$_FILES["addThesisPicture"]["tmp_name"];
-      $picture="assets/pages/img/thesis/".$foto;
-      if (strlen($summary) < 100 )
-      {
-        header("location: add-thesis.php?err=1");
-      }
-
-      move_uploaded_file($ruta,$picture);
+      $tempPath=$_FILES["addThesisPicture"]["tmp_name"];
+      $size = $_FILES['addThesisPicture']['size'];
+      // copy($ruta,$picture);
+      if (isset($tempPath) && strlen($tempPath)>4)
+		     {
+		        $nombre=$_FILES["addThesisPicture"]["name"];
+			       //$nomArchivo = $nombre;
+		       	$nombre=strtolower($nombre);
+		       	$cadena_1=array(" ","ñ","á","é","í","ó","ú","à","è","ì","ò","ù","ü");
+		      	$cadena_2=array("_","n","a","e","i","o","u","a","e","i","o","u","u");
+		       	$nombre=str_replace($cadena_1, $cadena_2, $nombre);
+			      $nombre=preg_replace('/[^0-9a-z\.\_\-]/i','',$nombre);
+		       	$nombre=number_format(rand(1,9999),0,'','')."_".$nombre;
+		        $destino = dirFile;
+			      $tamano = intval($size);
+		       	if($tamano < 10485760)
+		       	{
+				       if (copy($tempPath,$destino.$nombre))
+		       			$picture = urlFile.$nombre;
+		       	}
+				      else
+		       			die("Error al subir el archivo");
+		      }
 
       foreach ($tecnology as $tec)
       {
         $tecAux .= $tec. " ";
       }
-        
+
         if (empty($support[0]))
         {
           $support[0] = 'NULL';
@@ -89,8 +122,6 @@
         }
        $connection->close();
     }else {
-
-
     }
   }
 ?>
@@ -135,7 +166,6 @@
     <!-- Theme styles END -->
 </head>
 <!-- Head END -->
-
 <!-- Body BEGIN -->
 <body class="corporate">
 

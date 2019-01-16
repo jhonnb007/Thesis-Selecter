@@ -4,17 +4,26 @@
     include_once 'assets/code/university.php';
     include_once 'assets/code/educative_program.php';
     include_once 'assets/code/school.php';
-    $mail = $_GET["mail"];
+/*    $mail = $_GET["mail"];
     $name = $_GET["name"];
     $ap = $_GET["ap"];
     if (empty($_GET["mail"] && $_GET["name"] && $_GET["ap"]))
     {
       header("Location: error-permission.php");
     }
-    $last= explode(" ",$ap);
-    session_start();
+	*/
 
-    if (isset($_SESSION['researcher']))
+
+	session_start();
+	require_once("federated.php"); //Se asegura que el usuario este autenticado
+   $atributos = $saml->getAttributes();
+   global $correo; //Obtiene sus atributos
+   $mail = $atributos["uCorreo"][0];
+   $name = $atributos["givenName"][0];
+   $ap = $atributos["sn"][0];
+   $last= explode(" ",$ap);
+
+	if (isset($_SESSION['researcher']))
     {
         header("Location: error-permission.php");
     }
@@ -137,28 +146,39 @@
 
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
-                <ul>
-                    <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
-                    <li><a href="login.php">Asesores</a></li>
-                    <li><a href="about.php">Sobre Nosotros</a></li>
-
-                    <!-- BEGIN TOP SEARCH -->
-                    <li class="menu-search">
-                        <span class="sep"></span>
-                        <i class="fa fa-search search-btn"></i>
-                        <div class="search-box">
-                            <form action="javascript:void(0);">
-                                <div class="input-group">
-                                    <input type="text" placeholder="Buscar" class="form-control">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">Buscar</button>
-                                    </span>
-                                </div>
-                            </form>
+              <ul>
+                  <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
+                  <li><a href="about.php">Sobre Nosotros</a></li>
+                  <li class="dropdown">
+                      <profile>
+                          <div class="testimonials-v1 dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                              <div class="carousel-info">
+                                  <img class="pull-left" src="assets/pages/img/people/avatar-small.png" alt="avatar-small">
+                              </div>
+                          </div>
+                      </profile>
+                      <ul class="dropdown-menu">
+                          <li><a href="logout_federated.php">Cerrar Sesión</a></li>
+                      </ul>
+                  </li>
+                  <!-- BEGIN TOP SEARCH -->
+                  <li class="menu-search">
+                    <span class="sep"></span>
+                    <i class="fa fa-search search-btn"></i>
+                    <div class="search-box">
+                      <form action="javascript:void(0);">
+                        <div class="input-group">
+                          <input type="text" placeholder="Buscar" class="form-control">
+                          <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                          </span>
                         </div>
-                    </li>
-                    <!-- END TOP SEARCH -->
-                </ul>
+                      </form>
+                    </div>
+                    <span class="sep"></span>
+                  </li>
+                  <!-- END TOP SEARCH -->
+              </ul>
             </div>
             <!-- END NAVIGATION -->
         </div>
@@ -322,7 +342,6 @@
 
         </div>
     </div>
-        <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
     <!-- END FOOTER -->

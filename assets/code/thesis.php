@@ -6,7 +6,6 @@
 		private $level;
 		private $researcher;
 		private $topic;
-		private $topic2;
 		private $educative_program;
 		private $funding_agency;
 		private $project;
@@ -47,11 +46,6 @@
 		public function set_topic($topic)
 		{
 			$this->topic = $topic;
-		}
-
-		public function set_topic2($topic2)
-		{
-			$this->topic2 = $topic2;
 		}
 
 		public function set_educative_program($educative_program)
