@@ -1,7 +1,7 @@
 <?php
     include_once 'assets/code/thesis.php';
     include_once 'assets/code/researcher.php';
-
+    require_once("config.php");
     session_start();
 
 ?>
@@ -72,9 +72,46 @@
 
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
-
-                <?php
-                    if (isset($_SESSION['researcher']))
+            <?php
+            if ($saml->isAuthenticated())
+              {
+                ?>
+                <ul>
+                    <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
+                    <li><a href="about.php">Sobre Nosotros</a></li>
+                    <li class="dropdown">
+                        <profile>
+                            <div class="testimonials-v1 dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                                <div class="carousel-info">
+                                    <img class="pull-left" src="assets/pages/img/people/avatar-small.png" alt="avatar-small">
+                                </div>
+                            </div>
+                        </profile>
+                        <ul class="dropdown-menu">
+                            <li><a href="logout_federated.php">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                    <!-- BEGIN TOP SEARCH -->
+                    <li class="menu-search">
+                      <span class="sep"></span>
+                      <i class="fa fa-search search-btn"></i>
+                      <div class="search-box">
+                        <form action="javascript:void(0);">
+                          <div class="input-group">
+                            <input type="text" placeholder="Buscar" class="form-control">
+                            <span class="input-group-btn">
+                              <button class="btn btn-primary" type="submit">Buscar</button>
+                            </span>
+                          </div>
+                        </form>
+                      </div>
+                      <span class="sep"></span>
+                    </li>
+                    <!-- END TOP SEARCH -->
+                </ul>
+              <?php
+              }
+              else if (isset($_SESSION['researcher']))
                     {?>
                         <?php
                             if (isset($_GET['thesis_tabs']))
@@ -265,7 +302,6 @@
 
         </div>
     </div>
-     <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer.php'); ?>
     <!-- END FOOTER -->
@@ -292,5 +328,7 @@
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
+<?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+
 <!-- END BODY -->
 </html>

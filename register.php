@@ -1,55 +1,3 @@
-<?php
-  include_once 'assets/code/include/db_connection.php';
-  include_once 'assets/code/include/db_functions.php';
-  require_once("config.php");
-  session_start();
-  if (!isset($_SESSION['researcher']))
-  {
-      header("Location: error-permission.php");
-  } else if ($saml->isAuthenticated())
-  {
-      header("Location: error-permission.php");
-  }
-  if (isset($_POST['oldPwd'], $_POST['newPwd'], $_POST['confPwd']))
-  {
-    if (!empty($_POST['oldPwd'] && $_POST['newPwd'] && $_POST['confPwd']))
-    {
-      if ($_POST['newPwd']==$_POST['confPwd'])
-      {
-        global $connection;
-        $action = $_SESSION['researcher']->get_email();
-        $sql = "SELECT ResearcherID, EmailPassword FROM researcher where EmailAddress = '$action'";
-        $result = $connection->query($sql);
-        if ($result->num_rows > 0) {
-             while($row = $result->fetch_assoc()) {
-               $researcher = $row['ResearcherID'];
-               $password = $row['EmailPassword'];
-          }
-        }
-        if ($password==$_POST['oldPwd'])
-        {
-          $pwd = $_POST['newPwd'];
-          $sql = "UPDATE researcher SET EmailPassword='$pwd' WHERE ResearcherID=$researcher";
-          if ($connection->query($sql) === TRUE) {
-             header('location: success_password.php');
-             } else {
-               header('location: error_password.php');
-
-            }
-           $connection->close();
-        } else {
-          header('location: error_password.php');
-        }
-
-      }else {
-        header('location: error_password.php');
-      }
-
-    }else {
-      header('location: error_password.php');
-    }
-  }
-?>
 <!DOCTYPE html>
 <!--
 --
@@ -67,8 +15,7 @@
 <head>
     <?php include('metadata.php'); ?>
     <link href='assets/corporate/img/logos/logo-favicon.png' rel='shortcut icon' type='image/png'>
-
-    <!-- Fonts START -->
+<!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
@@ -80,6 +27,7 @@
     <!-- Page level plugin styles START -->
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-multiselect/bootstrap-multiselect.css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
@@ -116,23 +64,28 @@
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
-                <ul>
-                    <li><a href="/Thesis-Selecter">Tesis</a></li>
-                    <li><a href="my-theses.php">Mis Tesis</a></li>
-                    <li><a href="requests.php">Solicitudes</a></li>
-                    <li class="dropdown active">
-                        <profile>
-                            <div class="testimonials-v1 dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                                <div class="carousel-info">
-                                    <img class="pull-left" src="<?php echo $_SESSION['researcher']->get_image_profile();?>" alt="avatar-small">
-                                </div>
-                            </div>
-                        </profile>
-                        <ul class="dropdown-menu">
-                          <li><a href="javascript:void(0);" data-toggle="modal" data-target="#profileTeacher" ><?php echo $_SESSION['researcher']->get_full_name(); ?></a></li>
-                            <li><a href="assets/code/session.php?logout=true">Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
+              <ul>
+                  <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
+                  <li><a href="login.php">Asesores</a></li>
+                  <li><a href="about.php">Sobre Nosotros</a></li>
+                  <!-- BEGIN TOP SEARCH -->
+                  <li class="menu-search">
+                    <span class="sep"></span>
+                    <i class="fa fa-search search-btn"></i>
+                    <div class="search-box">
+                      <form action="javascript:void(0);">
+                        <div class="input-group">
+                          <input type="text" placeholder="Buscar" class="form-control">
+                          <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                          </span>
+                        </div>
+                      </form>
+                    </div>
+                  </li>
+                  <!-- END TOP SEARCH -->
+              </ul>
+
                     <!-- BEGIN TOP SEARCH -->
                     <li class="menu-search">
                         <span class="sep"></span>
@@ -160,45 +113,75 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="index.php">Inicio</a></li>
-                <li class="active">Cambiar Contraseña</li>
+                <li><a href="my-theses.php">Mis Tesis</a></li>
+                <li class="active">Agregar Tesis</li>
             </ul>
             <!-- BEGIN SIDEBAR & CONTENT -->
             <div class="row margin-bottom-60 ">
                 <!-- BEGIN CONTENT -->
-                <form method="post" class="form-horizontal form-without-legend" action="change_password.php">
-                  <div class="col-md-12 margin-bottom-50">
-                      <h2>Cambiar Contraseña</h2>
+                <form action="add-thesis.php"enctype="multipart/form-data" class="form-horizontal form-without-legend"  method="post">
+                  <div class="col-md-12">
+                      <h2>Registrar</h2>
                   </div>
-                    <div class="form-group col-sm-12">
-                        <label for="oldPwd" class="col-lg-4 control-label">Contraseña actual: <span class="require">*</span></label>
+                  <div class="form-group col-sm-12">
+                      <label for="RegisterName" class="col-lg-4 control-label">Nombre: <span class="require">*</span></label>
+                      <div class="col-lg-8">
+                          <input type="text" class="form-control" id="RegisterName" name="RegisterName" required="required">
+                      </div>
+                    </div>
+                      <div class="form-group col-sm-12">
+                        <label for="Registeremail" class="col-lg-4 control-label">Correo: <span class="require">*</span></label>
                         <div class="col-lg-8">
-                            <input type="password" class="form-control" id="oldPwd" name="oldPwd" required="required">
+                          <input type="email" class="form-control" id="Registeremail" required="required">
                         </div>
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <label for="newPwd" class="col-lg-4 control-label">Nueva contraseña: <span class="require">*</span></label>
-                        <div class="col-lg-8">
-                            <input type="password" class="form-control" id="newPwd" name="newPwd" required="required">
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <label for="confPwd" class="col-lg-4 control-label">Confirmar nueva contraseña: <span class="require">*</span></label>
-                        <div class="col-lg-8">
-                            <input type="password" class="form-control" id="confPwd" name="confPwd" required="required">
-                        </div>
-                    </div>
-                    <div class="row text-right col-sm-12">
-                        <button type="submit" class="btn btn-primary">Aplicar</button>
-                        <button type="button" class="btn btn-secondary" onclick="location.href='index.php'">Cerrar</button>
-                    </div>
+                      </div>
+                        <div class="form group col-sm-12">
+                              <label for="RegisterDep" class="col-lg-4 control-label">Dependencia: <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <select  class="form-control" id="RegisterDep" name="RegisterDep" required="required"></select>
+                            </div>
+                          </div>
+                          <div class="form-group col-sm-12">
+                              <label for="RegisterEd" class="col-lg-4 control-label">Edificio: <span class="require">*</span></label>
+                              <div class="col-lg-8">
+                                  <select class="form-control" id="RegisterEd" name="RegisterEd" required="required"></select>
+                              </div>
+                            </div>
+                            <div class="form group col-sm-12">
+                                  <label for="RegisterCu" class="col-lg-4 control-label">Cubiculo: <span class="require">*</span></label>
+                                <div class="col-lg-8">
+                                    <select  class="form-control" id="RegisterCu" name="RegisterCu" required="required"></select>
+                                </div>
+                              </div>
+                              <div class="form group col-sm-12">
+                                    <label for="RegisterLi" class="col-lg-4 control-label">Linea de Investigación: <span class="require">*</span></label>
+                                  <div class="col-lg-8">
+                                      <select  class="form-control" id="RegisterLi" name="RegisterLi" required="required"></select>
+                                  </div>
+                                </div>
+                                <div class="form group col-sm-12">
+                                      <label for="RegisterG" class="col-lg-4 control-label">Grupo de Investigación: <span class="require">*</span></label>
+                                    <div class="col-lg-8">
+                                        <select  class="form-control" id="RegisterG" name="RegisterG" required="required"></select>
+                                    </div>
+                                  </div>
+
+
+                         </form>
+
+                      </div>
+
+
+
               </div>
 
             </div>
           </div>
-        </form>
+
                 <!-- END CONTENT -->
             <!-- END SIDEBAR & CONTENT -->
-        <?php include('assets/pages/modals/Researcher/profile-teacher.php') ?>
+
+
 
     <!-- BEGIN PRE-FOOTER -->
         <?php include('footer-fixed.php'); ?>
@@ -216,9 +199,11 @@
     <!-- END CORE PLUGINS -->
 
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="assets/pages/scripts/Researcher/addThesis.js" type="text/javascript"></script>
     <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
     <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
     <script src="assets/plugins/bootstrap-filestyle/src/bootstrap-filestyle.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-multiselect/bootstrap-multiselect.js" type="text/javascript"></script>
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {

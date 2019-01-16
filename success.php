@@ -1,3 +1,10 @@
+<?php
+   require_once("config.php");
+  if (!$saml->isAuthenticated())
+   {
+       header("Location: error-permission.php");
+   }
+?>
 <!DOCTYPE html>
 <!--
 --
@@ -65,29 +72,39 @@
 
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation pull-right font-transform-inherit">
-                <ul>
-
-                    <li><a href="/Thesis-Selecter">Tesis</a></li>
-                    <li><a href="login.php">Asesores</a></li>
-                    <li><a href="about.php">Sobre Nosotros</a></li>
-
-                    <!-- BEGIN TOP SEARCH -->
-                    <li class="menu-search">
-                        <span class="sep"></span>
-                        <i class="fa fa-search search-btn"></i>
-                        <div class="search-box">
-                            <form action="javascript:void(0);">
-                                <div class="input-group">
-                                    <input type="text" placeholder="Buscar" class="form-control">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">Buscar</button>
-                                    </span>
-                                </div>
-                            </form>
+              <ul>
+                  <li class="active"><a href="/Thesis-Selecter">Tesis</a></li>
+                  <li><a href="about.php">Sobre Nosotros</a></li>
+                  <li class="dropdown">
+                      <profile>
+                          <div class="testimonials-v1 dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                              <div class="carousel-info">
+                                  <img class="pull-left" src="assets/pages/img/people/avatar-small.png" alt="avatar-small">
+                              </div>
+                          </div>
+                      </profile>
+                      <ul class="dropdown-menu">
+                          <li><a href="logout_federated.php">Cerrar Sesión</a></li>
+                      </ul>
+                  </li>
+                  <!-- BEGIN TOP SEARCH -->
+                  <li class="menu-search">
+                    <span class="sep"></span>
+                    <i class="fa fa-search search-btn"></i>
+                    <div class="search-box">
+                      <form action="javascript:void(0);">
+                        <div class="input-group">
+                          <input type="text" placeholder="Buscar" class="form-control">
+                          <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                          </span>
                         </div>
-                    </li>
-                    <!-- END TOP SEARCH -->
-                </ul>
+                      </form>
+                    </div>
+                    <span class="sep"></span>
+                  </li>
+                  <!-- END TOP SEARCH -->
+              </ul>
             </div>
             <!-- END NAVIGATION -->
         </div>

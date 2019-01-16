@@ -1,7 +1,7 @@
 <?php
         include_once 'thesis.php';
-        
-	class Researcher 
+
+	class Researcher
 	{
 		private $id;
 		private	$full_name;
@@ -17,11 +17,12 @@
 		private	$school;
 		private $university;
 		private	$telephone;
+    private	$link;
                 private $image_profile;
-		
+
 		public function __construct()
 		{
-			
+
 		}
 
 		public function set_id($id)
@@ -63,7 +64,7 @@
 		{
 			$this->research_group = $research_group;
 		}
-                
+
                 public function set_research_group_key($research_group_key)
                 {
                         $this->research_group_key = $research_group_key;
@@ -93,10 +94,15 @@
 		{
 			$this->telephone = $telephone;
 		}
-                
+
                 public function set_image_profile($image_profile) {
                     $this->image_profile = $image_profile;
                 }
+
+    public function set_link($link)
+    {
+      $this->link = $link;
+    }
 
 		public function get_id()
 		{
@@ -142,11 +148,11 @@
 		{
 			return $this->research_group;
 		}
-                
+
                 public function get_research_group_key()
                 {
                         return $this->research_group_key;
-                }                   
+                }
 
 		public function get_research_line()
 		{
@@ -172,11 +178,16 @@
 		{
 			return $this->telephone;
 		}
-                
+    
+    public function get_link()
+    {
+      return $this->link;
+    }
+
                 public function get_image_profile() {
                     return $this->image_profile;
                 }
-                
+
                 //Saca del array la thesis por su id
                 public function get_thesis_by_id($thesis_id) {
                     foreach ($this->theses as $thesis) {
@@ -184,13 +195,13 @@
                             return $thesis;
                         }
                     }
-                    
+
                     return false;
                 }
-                
+
                 public function change_thesis_status($thesis_id, $status) {
                     $thesis = $this->get_thesis_by_id($thesis_id);
-                    
+
                     for ($i = 0; $i < count($this->theses); $i++) {
                         if ($this->theses[$i]->get_id() == $thesis_id) {
                             $thesis->set_status($status);
